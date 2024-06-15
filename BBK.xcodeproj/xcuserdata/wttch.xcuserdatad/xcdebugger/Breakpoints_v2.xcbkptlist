@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "7D667AEB-452F-4FE6-9A1A-540DE2E22FBC"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "10F3AC6B-2204-4998-B35D-D4CD611C0C61"
+            shouldBeEnabled = "No"
+            condition = "width == 112 &amp;&amp; height == 47 &amp;&amp; number =="
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BBK/ResLib/Entity/ResImage.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "createImage()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

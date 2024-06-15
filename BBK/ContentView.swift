@@ -8,14 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var images: [CGImage] = []
+    @State var selection: ResType = .gut
+    
+    let imageResTypes: [ResType] = [.til, .acp, .gdp, .ggj, .pic]
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        NavigationSplitView(sidebar: {
+            List(selection: $selection , content: {
+                ForEach(ResType.allCases, id: \.self) { resType in
+                    Text(resType.name)
+                        .tag(resType)
+                }
+            })
+        }, detail: {
+            if self.imageResTypes.contains(selection) {
+                ImageGalleryView(resType: selection)
+            }
+        })
     }
 }
 
