@@ -15,8 +15,8 @@
             filePath = "BBK/ResLib/Entity/ResImage.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "createImage()"
             landmarkType = "7">
          </BreakpointContent>

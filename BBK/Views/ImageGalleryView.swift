@@ -27,12 +27,13 @@ struct ImageGalleryView: View {
                         if let image = DatLib.shared.getImage(resType: resType, type: type, index: index) {
                         
                              Text("W:\(image.width) H:\(image.height)")
-                            LazyVGrid(columns: Array(repeating: .init(.fixed(CGFloat(image.width))), count: 8), content: {
+                        
+                            LazyVGrid(columns: Array(repeating: .init(.fixed(CGFloat(image.width))), count: 600 / image.width),
+                                      alignment: .leading,
+                                      content: {
                            
                                 ForEach(0..<image.images.count, id: \.self) { i in
-                                    VStack {
                                         Image(image.images[i], scale: 1.0, label: Text("\(i)"))
-                                    }
                                 }
                             })
                         }

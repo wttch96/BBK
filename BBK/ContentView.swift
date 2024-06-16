@@ -26,6 +26,10 @@ struct ContentView: View {
             if self.imageResTypes.contains(selection) {
                 ImageGalleryView(resType: selection)
             }
+            
+            if selection == .grs {
+                GoodsView()
+            }
         })
     }
 }

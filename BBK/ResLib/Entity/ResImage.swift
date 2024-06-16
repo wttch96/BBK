@@ -90,10 +90,6 @@ class ResImage: ResBase {
                     }
                 }
                 
-                if type == 2 && index == 14 && width == 112 {
-                    print(tmp)
-                }
-                
                 if let image = imageFromARGB32Bitmap(pixels: tmp, width: width, height: height) {
                     self.images.append(image)
                 }

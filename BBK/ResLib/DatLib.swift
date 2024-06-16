@@ -15,6 +15,8 @@ class DatLib {
     
     var dataIndex: [Int: [Int: [Int]]] = [:]
     
+    private var imageCache: [Int: ResImage] = [:]
+    
     static let shared = DatLib(url: Bundle.main.url(forResource: "DAT", withExtension: ".LIB")!)
     
     init(url: URL) {
@@ -32,8 +34,22 @@ class DatLib {
     
     func getImage(resType: ResType, type: Int, index: Int) -> ResImage? {
         guard let offset = getDataOffset(resType: resType.rawValue, type: type, index: index) else { return nil }
+        let key = getKey(resType: resType.rawValue, type: type, index: index)
+        if let cache = imageCache[key] {
+            return cache
+        } else {
+            let image = ResImage(data: data, offset: offset)
+            imageCache[key] = image
+            return image
+        }
+    }
+    
+    func getGood(type: Int, index: Int) -> GoodBase? {
+        guard let offset = getDataOffset(resType: ResType.grs.rawValue, type: type, index: index) else { return nil }
         
-        return ResImage(data: data, offset: offset)
+        let good = GoodBase(data: data, offset: offset)
+        
+        return good
     }
     
     private func getAllResOffset() {
