@@ -16,10 +16,11 @@ class DatLib {
     var dataIndex: [Int: [Int: [Int]]] = [:]
     
     private var imageCache: [Int: ResImage] = [:]
+    private var mapCache: [Int: ResMap] = [:]
     
     static let shared = DatLib(url: Bundle.main.url(forResource: "DAT", withExtension: ".LIB")!)
     
-    init(url: URL) {
+    private init(url: URL) {
         self.url = url
         self.data = try! Data(contentsOf: url)
         
@@ -30,6 +31,16 @@ class DatLib {
         guard let offset = getDataOffset(resType: 1, type: type, index: index) else { return nil }
         
         return ResGut(data: data, offset: offset)
+    }
+    
+    func getMap(type: Int, index: Int) -> ResMap? {
+        guard let offset = getDataOffset(resType: ResType.map.rawValue, type: type, index: index) else { return nil }
+        
+        let resMap = self.mapCache[offset] ?? ResMap(data: data, offset: offset)
+        
+        self.mapCache[offset] = resMap
+        
+        return resMap
     }
     
     func getImage(resType: ResType, type: Int, index: Int) -> ResImage? {

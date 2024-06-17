@@ -23,6 +23,9 @@
 		4954E4652C1D79BF008E99B8 /* ImageGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4954E4642C1D79BF008E99B8 /* ImageGalleryView.swift */; };
 		4954E4682C1F56C4008E99B8 /* GoodBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4954E4672C1F56C4008E99B8 /* GoodBase.swift */; };
 		4954E46A2C1F579E008E99B8 /* GoodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4954E4692C1F579E008E99B8 /* GoodsView.swift */; };
+		4954E46C2C1FED83008E99B8 /* ResMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4954E46B2C1FED83008E99B8 /* ResMap.swift */; };
+		4954E46E2C1FEDF3008E99B8 /* MapGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4954E46D2C1FEDF3008E99B8 /* MapGalleryView.swift */; };
+		4954E4712C2017C4008E99B8 /* ImageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4954E4702C2017C4008E99B8 /* ImageUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,9 @@
 		4954E4642C1D79BF008E99B8 /* ImageGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGalleryView.swift; sourceTree = "<group>"; };
 		4954E4672C1F56C4008E99B8 /* GoodBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodBase.swift; sourceTree = "<group>"; };
 		4954E4692C1F579E008E99B8 /* GoodsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsView.swift; sourceTree = "<group>"; };
+		4954E46B2C1FED83008E99B8 /* ResMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResMap.swift; sourceTree = "<group>"; };
+		4954E46D2C1FEDF3008E99B8 /* MapGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapGalleryView.swift; sourceTree = "<group>"; };
+		4954E4702C2017C4008E99B8 /* ImageUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +119,7 @@
 		4954E4292C1BC5C4008E99B8 /* BBK */ = {
 			isa = PBXGroup;
 			children = (
+				4954E46F2C2017B2008E99B8 /* Util */,
 				4954E4632C1D7992008E99B8 /* Views */,
 				4954E4562C1BC60E008E99B8 /* DAT.LIB */,
 				4954E4552C1BC5DF008E99B8 /* ResLib */,
@@ -154,21 +161,22 @@
 			isa = PBXGroup;
 			children = (
 				4954E4662C1F564E008E99B8 /* Good */,
-				4954E45A2C1D3EE5008E99B8 /* Entity */,
+				4954E45A2C1D3EE5008E99B8 /* Res */,
 				4954E4582C1BC66E008E99B8 /* DatLib.swift */,
 				4954E4612C1D7565008E99B8 /* ResType.swift */,
 			);
 			path = ResLib;
 			sourceTree = "<group>";
 		};
-		4954E45A2C1D3EE5008E99B8 /* Entity */ = {
+		4954E45A2C1D3EE5008E99B8 /* Res */ = {
 			isa = PBXGroup;
 			children = (
 				4954E45B2C1D3EF8008E99B8 /* ResBase.swift */,
 				4954E45D2C1D4D37008E99B8 /* ResGut.swift */,
 				4954E45F2C1D6467008E99B8 /* ResImage.swift */,
+				4954E46B2C1FED83008E99B8 /* ResMap.swift */,
 			);
-			path = Entity;
+			path = Res;
 			sourceTree = "<group>";
 		};
 		4954E4632C1D7992008E99B8 /* Views */ = {
@@ -176,6 +184,7 @@
 			children = (
 				4954E4642C1D79BF008E99B8 /* ImageGalleryView.swift */,
 				4954E4692C1F579E008E99B8 /* GoodsView.swift */,
+				4954E46D2C1FEDF3008E99B8 /* MapGalleryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -186,6 +195,14 @@
 				4954E4672C1F56C4008E99B8 /* GoodBase.swift */,
 			);
 			path = Good;
+			sourceTree = "<group>";
+		};
+		4954E46F2C2017B2008E99B8 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				4954E4702C2017C4008E99B8 /* ImageUtil.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,6 +340,9 @@
 				4954E42D2C1BC5C4008E99B8 /* ContentView.swift in Sources */,
 				4954E45C2C1D3EF8008E99B8 /* ResBase.swift in Sources */,
 				4954E42B2C1BC5C4008E99B8 /* BBKApp.swift in Sources */,
+				4954E46E2C1FEDF3008E99B8 /* MapGalleryView.swift in Sources */,
+				4954E4712C2017C4008E99B8 /* ImageUtil.swift in Sources */,
+				4954E46C2C1FED83008E99B8 /* ResMap.swift in Sources */,
 				4954E4602C1D6467008E99B8 /* ResImage.swift in Sources */,
 				4954E4622C1D7565008E99B8 /* ResType.swift in Sources */,
 				4954E4592C1BC66E008E99B8 /* DatLib.swift in Sources */,

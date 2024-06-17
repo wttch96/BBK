@@ -25,17 +25,11 @@ struct ImageGalleryView: View {
                 ForEach(selectIndexes, id: \.self, content: { index in
                     Section("Index: \(index)", content: {
                         if let image = DatLib.shared.getImage(resType: resType, type: type, index: index) {
-                        
-                             Text("W:\(image.width) H:\(image.height)")
-                        
-                            LazyVGrid(columns: Array(repeating: .init(.fixed(CGFloat(image.width))), count: 600 / image.width),
-                                      alignment: .leading,
-                                      content: {
-                           
-                                ForEach(0..<image.images.count, id: \.self) { i in
-                                        Image(image.images[i], scale: 1.0, label: Text("\(i)"))
-                                }
-                            })
+                            Text("W:\(image.width) H:\(image.height)")
+                            Text("\(image.images.count)")
+                            if let image = image.image {
+                                Image(image, scale: 1, label: Text(""))
+                            }
                         }
                     })
                 })

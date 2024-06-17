@@ -19,6 +19,8 @@ class ResImage: ResBase {
     let data: Data
     
     var images: [CGImage] = []
+    var image: CGImage? = nil
+    
     required init(data: Data, offset: Int) {
         self.type = Int(data[offset])
         self.index = Int(data[offset + 1])
@@ -32,6 +34,7 @@ class ResImage: ResBase {
         self.data = Data(data[offset + 6..<offset + 6 + len])
         
         createImage()
+        self.image = self.images.combine(imageWidth: width, imageHeight: height, columnCount: 10)
     }
     
     private func createImage() {

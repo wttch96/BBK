@@ -37,7 +37,7 @@ struct GoodsView: View {
                                 }
                                 if let image = DatLib.shared.getImage(resType: .gdp, type: type, index: good.imageIndex) {
                                     ForEach(0..<image.images.count, id: \.self) { i in
-                                        Image(image.images[i], scale: 1.0, label: Text(""))
+                                        Image(image.images[i], scale: 1, label: Text(""))
                                     }
                                 }
                                 Text(good.description)

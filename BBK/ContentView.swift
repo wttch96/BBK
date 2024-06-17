@@ -30,6 +30,10 @@ struct ContentView: View {
             if selection == .grs {
                 GoodsView()
             }
+            
+            if selection == .map {
+                MapGalleryView()
+            }
         })
     }
 }
