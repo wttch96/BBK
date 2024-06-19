@@ -18,8 +18,9 @@ extension String {
     }
 }
 
+
 extension Data {
-    private func checkIndexInRange(_ start: Int) -> Bool {
+    func checkIndex(_ start: Int) -> Bool {
         if start >= count {
             print("Data get string error: start \(start), length: \(count).")
             return false
@@ -29,7 +30,7 @@ extension Data {
     }
     
     func getString(start: Int) -> String {
-        guard checkIndexInRange(start) else {
+        guard checkIndex(start) else {
             return ""
         }
         
@@ -50,7 +51,7 @@ extension Data {
     }
     
     func get2BytesUInt(start: Int) -> Int {
-        guard checkIndexInRange(start) else { return 0 }
+        guard checkIndex(start) else { return 0 }
         
         let value = UInt16(self[start]) | (UInt16(self[start + 1]) << 8)
         
@@ -58,7 +59,7 @@ extension Data {
     }
     
     func get4BytesUInt(start: Int) -> Int {
-        guard checkIndexInRange(start), checkIndexInRange(start + 3) else { return 0 }
+        guard checkIndex(start), checkIndex(start + 3) else { return 0 }
         
         let value: Int = (Int(self[start]) & 0xFF) | (Int(self[start + 1]) << 8 & 0xFF00) |
             (Int(self[start + 2] << 16) & 0xFF0000) | (Int(self[start + 3]) << 24)

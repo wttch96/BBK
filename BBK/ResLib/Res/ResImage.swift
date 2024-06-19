@@ -16,22 +16,25 @@ class ResImage: ResBase {
     let height: Int
     let number: Int
     let transparent: Bool
-    let data: Data
     
     var images: [CGImage] = []
     var image: CGImage? = nil
     
-    required init(data: Data, offset: Int) {
-        self.type = Int(data[offset])
-        self.index = Int(data[offset + 1])
-        self.width = Int(data[offset + 2])
-        self.height = Int(data[offset + 3])
-        self.number = Int(data[offset + 4])
-        self.transparent = data[offset + 5] == 2
-        
-        let len: Int = number * (width / 8 + (width % 8 != 0 ? 1 : 0)) * height * Int(data[offset + 5])
-        
-        self.data = Data(data[offset + 6..<offset + 6 + len])
+    let data: ResData
+    
+    var imageData: Data {
+        let len = number * (width / 8 + (width % 8 != 0 ? 1 : 0)) * height * Int(data[5])
+        return Data(data[6..<6+len])
+    }
+    
+    required init(data: ResData) {
+        self.data = data
+        self.type = Int(data[0])
+        self.index = Int(data[1])
+        self.width = Int(data[2])
+        self.height = Int(data[3])
+        self.number = Int(data[4])
+        self.transparent = data[5] == 2
         
         createImage()
         self.image = self.images.combine(imageWidth: width, imageHeight: height, columnCount: 10)
@@ -48,10 +51,10 @@ class ResImage: ResBase {
                 var iOfTmp = 0
                 for _ in 0..<height {
                     for _ in 0..<width {
-                        if (data[iOfData] << cnt) & 0x80 != 0 {
+                        if (imageData[iOfData] << cnt) & 0x80 != 0 {
                             tmp[iOfTmp] = 0x00000000
                         } else {
-                            tmp[iOfTmp] = ((Int(data[iOfData]) << (cnt + 1)) & 0x80) != 0 ? 0xff000000 : 0xffffffff
+                            tmp[iOfTmp] = ((Int(imageData[iOfData]) << (cnt + 1)) & 0x80) != 0 ? 0xff000000 : 0xffffffff
                         }
                         
                         iOfTmp += 1
@@ -79,7 +82,7 @@ class ResImage: ResBase {
 
                 for _ in 0..<height {
                     for _ in 0..<width {
-                        tmp[iOfTmp] = ((data[iOfData] << cnt) & 0x80) != 0 ? 0xff000000 : 0xffffffff
+                        tmp[iOfTmp] = ((imageData[iOfData] << cnt) & 0x80) != 0 ? 0xff000000 : 0xffffffff
                         iOfTmp += 1
                         cnt += 1
                         if cnt >= 8 {

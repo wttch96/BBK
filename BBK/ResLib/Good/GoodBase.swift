@@ -8,8 +8,7 @@
 import Foundation
 
 class GoodBase: ResBase {
-    let data: Data
-    let offset: Int
+    let data: ResData
     
     let type: Int
     let index: Int
@@ -25,18 +24,17 @@ class GoodBase: ResBase {
     let description: String
     
     
-    required init(data: Data, offset: Int) {
+    required init(data: ResData) {
         self.data = data
-        self.offset = offset
-        self.type = Int(data[offset])
-        self.index = Int(data[offset + 1])
+        self.type = Int(data[0])
+        self.index = Int(data[1])
      
-        self.enable = Int(data[offset + 3])
-        self.sumRound = Int(data[offset + 4])
-        self.imageIndex = Int(data[offset + 5])
-        self.name = data.getString(start: offset + 6)
-        self.buyPrice = data.get2BytesUInt(start: offset + 0x12)
-        self.sellPrice = data.get2BytesUInt(start: offset + 0x14)
-        self.description = data.getString(start: offset + 0x1e)
+        self.enable = Int(data[3])
+        self.sumRound = Int(data[4])
+        self.imageIndex = Int(data[5])
+        self.name = data.getString(start: 6)
+        self.buyPrice = data.get2BytesUInt(start: 0x12)
+        self.sellPrice = data.get2BytesUInt(start: 0x14)
+        self.description = data.getString(start: 0x1e)
     }
 }

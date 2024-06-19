@@ -32,7 +32,7 @@ struct ContentView: View {
             case .srs:
                 EmptyView()
             case .grs:
-                EmptyView()
+                GoodsView()
             case .til:
                 ImageGalleryView(resType: selection)
             case .acp:

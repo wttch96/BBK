@@ -10,6 +10,7 @@ import CoreGraphics
 
 
 class ResMap: ResBase {
+    let data: ResData
     
     let type: Int
     let index: Int
@@ -28,8 +29,8 @@ class ResMap: ResBase {
     
     var eventIds: [[Int]] = []
     
-    required init(data: Data, offset: Int) {
-        let data = data.subdata(in: offset..<data.count)
+    required init(data: ResData) {
+        self.data = data
         type = Int(data[0])
         index = Int(data[1])
         
