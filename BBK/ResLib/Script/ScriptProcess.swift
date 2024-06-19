@@ -24,8 +24,8 @@ class ScriptProcess {
             nil, // 7
             nil, // 8
             CmdCallback.self, // 9
-            nil, // 10
-            nil, // 11
+            CmdGoto.self, // 10
+            CmdIf.self, // 11
             nil, // 12
             CmdSay.self, // 13
             CmdStartChapter.self, // 14
@@ -34,43 +34,43 @@ class ScriptProcess {
             nil, // 17
             nil, // 18
             nil, // 19
-            nil, // 20
-            nil, // 21
+            CmdGameOver.self, // 20
+            CmdIfCompare.self, // 21
             nil, // 22
             nil, // 23
             nil, // 24
             nil, // 25
             CmdSetEvent.self, // 26
-            nil, // 27
-            nil, // 28
-            nil, // 29
+            CmdClearEvent.self, // 27
+            CmdBuy.self, // 28
+            CmdFaceToFace.self, // 29
             CmdMovie.self, // 30
             nil, // 31
             CmdCreateBox.self, // 32
-            nil, // 33
-            nil, // 34
-            nil, // 35
+            CmdDeleteBox.self, // 33
+            CmdGainGoods.self, // 34
+            CmdInitFight.self, // 35
             nil, // 36
-            nil, // 37
+            CmdFightDisable.self, // 37
             CmdCreateNPC.self, // 38
-            nil, // 39
-            nil, // 40
-            nil, // 41
-            nil, // 42
+            CmdEnterFight.self, // 39
+            CmdDeleteActor.self, // 40
+            CmdGainMoney.self, // 41
+            CmdUseMoney.self, // 42
             CmdSetMoney.self, // 43
             nil, // 44
             nil, // 45
-            nil, // 46
-            nil, // 47
+            CmdNPCMoveMod.self, // 46
+            CmdMessage.self, // 47
             nil, // 48
-            nil, // 49
+            CmdResumeActorHP.self, // 49
             nil, // 50
             nil, // 51
-            nil, // 52
+            CmdDeleteAllNPC.self, // 52
             CmdNPCStep.self, // 53
-            nil, // 54
-            nil, // 55
-            nil, // 56
+            CmdSetSceneName.self, // 54
+            CmdShowSceneName.self, // 55
+            CmdShowScreen.self, // 56
             nil, // 57
             nil, // 58
             nil, // 59
@@ -78,14 +78,14 @@ class ScriptProcess {
             CmdShowScript.self, // 61
             nil, // 62
             nil, // 63
-            nil, // 64
+            CmdMenu.self, // 64
             nil, // 65
             nil, // 66
             nil, // 67
-            nil, // 68
+            CmdReturn.self, // 68
             nil, // 69
-            nil, // 70
-            nil, // 71
+            CmdDisableSave.self, // 70
+            CmdEnableSave.self, // 71
             nil, // 72
             nil, // 73
             nil, // 74

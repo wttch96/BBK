@@ -29,6 +29,20 @@ extension Data {
         return true
     }
     
+    func getArray(start: Int) -> [Int] {
+        guard checkIndex(start) else {
+            return []
+        }
+        var result: [Int] = []
+        var i = 0
+        while start + i < count && self[start + i] != 0 {
+            result.append(Int(self[i]))
+            i += 1
+        }
+        
+        return result
+    }
+    
     func getString(start: Int) -> String {
         guard checkIndex(start) else {
             return ""
