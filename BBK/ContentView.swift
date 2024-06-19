@@ -8,32 +8,45 @@
 import SwiftUI
 
 struct ContentView: View {
-    
     @State var images: [CGImage] = []
     @State var selection: ResType = .gut
     
-    let imageResTypes: [ResType] = [.til, .acp, .gdp, .ggj, .pic]
-    
     var body: some View {
         NavigationSplitView(sidebar: {
-            List(selection: $selection , content: {
+            List(selection: $selection, content: {
                 ForEach(ResType.allCases, id: \.self) { resType in
                     Text(resType.name)
                         .tag(resType)
                 }
             })
         }, detail: {
-            if self.imageResTypes.contains(selection) {
-                ImageGalleryView(resType: selection)
-            }
-            
-            if selection == .grs {
-                GoodsView()
-            }
-            
-            if selection == .map {
+            switch selection {
+            case .gut:
+                ScriptGalleryView()
+            case .map:
                 MapGalleryView()
+            case .ars:
+                EmptyView()
+            case .mrs:
+                EmptyView()
+            case .srs:
+                EmptyView()
+            case .grs:
+                EmptyView()
+            case .til:
+                ImageGalleryView(resType: selection)
+            case .acp:
+                ImageGalleryView(resType: selection)
+            case .gdp:
+                ImageGalleryView(resType: selection)
+            case .ggj:
+                ImageGalleryView(resType: selection)
+            case .pic:
+                ImageGalleryView(resType: selection)
+            case .mlr:
+                EmptyView()
             }
+            
         })
     }
 }

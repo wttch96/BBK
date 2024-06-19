@@ -27,10 +27,10 @@ class DatLib {
         getAllResOffset()
     }
     
-    func getGut(type: Int, index: Int) -> ResGut? {
-        guard let offset = getDataOffset(resType: 1, type: type, index: index) else { return nil }
+    func getScript(type: Int, index: Int) -> ResScript? {
+        guard let offset = getDataOffset(resType: ResType.gut.rawValue, type: type, index: index) else { return nil }
         
-        return ResGut(data: data, offset: offset)
+        return ResScript(data: data, offset: offset)
     }
     
     func getMap(type: Int, index: Int) -> ResMap? {

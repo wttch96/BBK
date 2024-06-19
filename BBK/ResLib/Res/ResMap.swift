@@ -53,7 +53,7 @@ class ResMap: ResBase {
         images = Array(repeating: Array(repeating: nil, count: width), count: height)
         for y in 0..<height {
             for x in 0..<width {
-                let image = DatLib.shared.getImage(resType: .til, type: 1, index: tileIndex)?.images[getTileIndex(x: x, y: y)]
+                let image = DatLib.shared.getImage(resType: .til, type: 1, index: tileIndex)?.images[min(126, getTileIndex(x: x, y: y))]
                 self.images[y][x] = image
             }
         }

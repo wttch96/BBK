@@ -67,6 +67,24 @@ struct MapView: View {
                                     self.tapX = Int(loc.location.x) / 16
                                     self.tapY = Int(loc.location.y) / 16
                                 }))
+                            
+                            ForEach(0..<map.height, id: \.self) { y in
+                                ForEach(0..<map.width, id: \.self) { x in
+                                    if !map.canWalk(x: x, y: y) {
+                                        Rectangle()
+                                            .fill(.red.opacity(0.8))
+                                            .frame(width: 16, height: 16)
+                                            .offset(x: CGFloat(x * 16), y: CGFloat(y * 16))
+                                    }
+                                    if map.eventIds[y][x] > 0 {
+                                        Rectangle()
+                                            .fill(.green.opacity(0.8))
+                                            .frame(width: 16, height: 16)
+                                            .offset(x: CGFloat(x * 16), y: CGFloat(y * 16))
+                                    }
+                                }
+                            }
+                            .allowsHitTesting(false)
                             Rectangle()
                                 .stroke(.purple, lineWidth: 2)
                                 .frame(width: 16, height: 16)
