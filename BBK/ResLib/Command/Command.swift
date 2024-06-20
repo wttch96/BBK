@@ -54,9 +54,9 @@ class CmdLoadMap: CommandBase {
 
     override var description: String {
         if let resMap = DatLib.shared.getMap(type: type, index: index) {
-            super.description + "\(resMap.name) (\(x), \(y))"
+            "加载地图 \(resMap.name) (\(x), \(y))"
         } else {
-            super.description + "\(type),\(index) (\(x), \(y))"
+            "加载地图 \(type),\(index) (\(x), \(y))"
         }
     }
 }
@@ -70,7 +70,7 @@ class CmdCreateActor: CommandBase {
 
     override var length: Int { 6 }
 
-    override var description: String { "\(super.description) actorId[\(actorId)], pos(\(x), \(y))" }
+    override var description: String { "创建角色 actorId[\(actorId)], pos(\(x), \(y))" }
 }
 
 // MARK: 3: Delete NPC
@@ -80,7 +80,7 @@ class CmdDeleteNPC: CommandBase {
 
     override var length: Int { 2 }
 
-    override var description: String { "\(super.description) [\(npcId)]" }
+    override var description: String { "删除NPC [\(npcId)]" }
 }
 
 // MARK: 6: Move
@@ -92,7 +92,7 @@ class CmdMove: CommandBase {
 
     override var length: Int { 6 }
 
-    override var description: String { "\(super.description) NPC[\(npcId)] 移动到 (\(dstX), \(dstY))" }
+    override var description: String { "NPC[\(npcId)] 移动到 (\(dstX), \(dstY))" }
 }
 
 // MARK: 9: Callback
@@ -105,7 +105,7 @@ class CmdGoto: CommandBase {
     var gotoIndex: Int { data.get2BytesUInt(start: 0) }
     override var length: Int { 2 }
 
-    override var description: String { "\(super.description) [\(gotoIndex)]" }
+    override var description: String { "[\(gotoIndex)]" }
 }
 
 // MARK: 11: If
@@ -117,8 +117,18 @@ class CmdIf: CommandBase {
     override var length: Int { 4 }
 
     override var description: String {
-        "\(super.description) if [\(ifIndex)] goto [\(gotoIndex)] "
+        "如果 [\(ifIndex)] 跳转 [\(gotoIndex)] "
     }
+}
+
+// MARK: 12: Set
+
+class CmdSet: CommandBase {
+    var valueIndex: Int { data.get2BytesUInt(start: 0) }
+    var value: Int { data.get2BytesUInt(start: 2) }
+    override var length: Int { 4 }
+
+    override var description: String { "设置[\(valueIndex)]为\(value)" }
 }
 
 // MARK: 13: say
@@ -130,7 +140,7 @@ class CmdSay: CommandBase {
 
     override var length: Int { 2 + text.gbkCount + 1 }
 
-    override var description: String { "\(super.description) [\(actorId)]: '\(text)'" }
+    override var description: String { "[\(actorId)]说: '\(text)'" }
 }
 
 // MARK: 14: Start Chapter
@@ -141,7 +151,7 @@ class CmdStartChapter: CommandBase {
 
     override var length: Int { 4 }
 
-    override var description: String { "\(super.description) 开始第\(type).\(index)章" }
+    override var description: String { "开始第\(type).\(index)章" }
 }
 
 // MARK: 20: Game Over
@@ -157,7 +167,26 @@ class CmdIfCompare: CommandBase {
 
     override var length: Int { 6 }
 
-    override var description: String { "\(super.description) 如果 [\(op1Index)] == [\(op2Index)] goto [\(gotoIndex)]" }
+    override var description: String { "如果 [\(op1Index)] == [\(op2Index)] goto [\(gotoIndex)]" }
+}
+
+// MARK: 22: Add
+
+class CmdAdd: CommandBase {
+    var valueIndex: Int { data.get2BytesUInt(start: 0) }
+    var value: Int { data.get2BytesUInt(start: 2) }
+    override var length: Int { 4 }
+
+    override var description: String { "[\(valueIndex)] += \(value)" }
+}
+
+// MARK: 23: Sub
+class CmdSub: CommandBase {
+    var valueIndex: Int { data.get2BytesUInt(start: 0) }
+    var value: Int { data.get2BytesUInt(start: 2) }
+    override var length: Int { 4 }
+
+    override var description: String { "[\(valueIndex)] -= \(value)" }
 }
 
 // MARK: 26: Set Event
@@ -166,7 +195,7 @@ class CmdSetEvent: CommandBase {
     lazy var eventId: Int = data.get2BytesUInt(start: 0)
     override var length: Int { 2 }
 
-    override var description: String { "\(super.description) [\(eventId)]" }
+    override var description: String { "设置事件[\(eventId)]" }
 }
 
 // MARK: 27: Clear Event
@@ -176,7 +205,7 @@ class CmdClearEvent: CommandBase {
 
     override var length: Int { 2 }
 
-    override var description: String { "\(super.description) 清除事件[\(eventId)]" }
+    override var description: String { "清除事件[\(eventId)]" }
 }
 
 // MARK: 28: Buy
@@ -186,7 +215,7 @@ class CmdBuy: CommandBase {
 
     override var length: Int { goodIds.count + 1 }
 
-    override var description: String { "\(super.description) 购买: \(goods.map { $0.name })" }
+    override var description: String { "购买: \(goods.map { $0.name })" }
 
     var goods: [GoodBase] {
         var goods: [GoodBase] = []
@@ -210,14 +239,26 @@ class CmdFaceToFace: CommandBase {
     override var length: Int { 4 }
 
     override var description: String {
-        "\(super.description) \(character1Id) <--->\(character2Id)"
+        "\(character1Id) <--->\(character2Id) 面对面"
     }
 }
 
-// MARK: 30
+// MARK: 30: Movie
 
 class CmdMovie: CommandBase {
     override var length: Int { 10 }
+}
+
+// MARK: 31: Choice
+
+class CmdChoice: CommandBase {
+    var choice1: String { data.getString(start: 0) }
+    var choice2: String { data.getString(start: choice1.gbkCount + 1) }
+    var gotoAddress: Int { data.get2BytesUInt(start: choice1.gbkCount + 1 + choice2.gbkCount + 1) }
+
+    override var length: Int { choice1.gbkCount + 1 + choice2.gbkCount + 1 + 2 }
+
+    override var description: String { "选择1: \(choice1), 选择2: \(choice2) 如果选择2跳转[\(gotoAddress)]" }
 }
 
 // MARK: 32: CreateBox
@@ -232,7 +273,7 @@ class CmdCreateBox: CommandBase {
 
     override var length: Int { 8 }
 
-    override var description: String { "\(super.description) 宝箱[\(boxId)]在 (\(x), \(y))处. 操作id(\(operatorId))" }
+    override var description: String { "创建宝箱[\(boxId)]在 (\(x), \(y))处. 操作id(\(operatorId))" }
 }
 
 // MARK: 33: Delete Box
@@ -242,7 +283,7 @@ class CmdDeleteBox: CommandBase {
 
     override var length: Int { 2 }
 
-    override var description: String { "\(super.description) 删除宝箱[\(boxId)]" }
+    override var description: String { "删除宝箱[\(boxId)]" }
 }
 
 // MARK: 34: Gain Goods
@@ -252,7 +293,7 @@ class CmdGainGoods: CommandBase {
     override var index: Int { data.get2BytesUInt(start: 2) }
     override var length: Int { 4 }
 
-    override var description: String { "\(super.description) 获得: [\(DatLib.shared.getGood(type: type, index: index)?.name ?? "")]" }
+    override var description: String { "获得: [\(DatLib.shared.getGood(type: type, index: index)?.name ?? "")]" }
 }
 
 // MARK: 35: Init Fight
@@ -277,7 +318,7 @@ class CmdInitFight: CommandBase {
     override var length: Int { 22 }
 
     override var description: String {
-        "\(super.description) 敌人种类: \(monstersType), 战斗背景ID: \(backgroundId), \(lbId), \(rtId)"
+        "初始化战斗, 敌人种类: \(monstersType), 战斗背景ID: \(backgroundId), \(lbId), \(rtId)"
     }
 }
 
@@ -296,7 +337,7 @@ class CmdCreateNPC: CommandBase {
     override var length: Int { 8 }
 
     override var description: String {
-        "\(super.description) 在(\(x), \(y))创建[\(id)]NPC, 操作id(\(operatorId))"
+        "在(\(x), \(y))创建[\(id)]NPC, 操作id(\(operatorId))"
     }
 }
 
@@ -337,7 +378,7 @@ class CmdEnterFight: CommandBase {
     override var length: Int { 30 }
 
     override var description: String {
-        "\(super.description) 最大回合: \(maxRound), 敌人类型: \(monstersTypes), 战斗背景Id: \(backgrounds), 事件回合: \(eventRounds), 事件: \(eventIds), 胜利?[\(winTo)]:[\(lossTo)]"
+        "进入战斗, 最大回合: \(maxRound), 敌人类型: \(monstersTypes), 战斗背景Id: \(backgrounds), 事件回合: \(eventRounds), 事件: \(eventIds), 胜利?[\(winTo)]:[\(lossTo)]"
     }
 }
 
@@ -348,7 +389,7 @@ class CmdDeleteActor: CommandBase {
 
     override var length: Int { 2 }
 
-    override var description: String { "\(super.description) [\(actorId)]离队" }
+    override var description: String { "[\(actorId)]离队" }
 }
 
 // MARK: 41: Gain Money
@@ -357,7 +398,7 @@ class CmdGainMoney: CommandBase {
     var money: Int { data.get4BytesUInt(start: 0) }
     override var length: Int { 4 }
 
-    override var description: String { "\(super.description) 获得金钱: \(money)" }
+    override var description: String { "获得金钱: \(money)" }
 }
 
 // MARK: 42: Use Money
@@ -366,7 +407,7 @@ class CmdUseMoney: CommandBase {
     lazy var money: Int = data.get4BytesUInt(start: 0)
     override var length: Int { 4 }
 
-    override var description: String { "\(super.description) 使用金钱: \(money)" }
+    override var description: String { "使用金钱: \(money)" }
 }
 
 // MARK: 43: Set Money
@@ -375,8 +416,23 @@ class CmdSetMoney: CommandBase {
     lazy var money: Int = data.get4BytesUInt(start: 0)
     override var length: Int { 4 }
 
-    override var description: String { "\(super.description) [\(money)]" }
+    override var description: String { "设置金钱为[\(money)]" }
 }
+
+// MARK: 44: Learn Magic
+
+class CmdLearnMagic: CommandBase {
+    var actorId: Int { data.get2BytesUInt(start: 0) }
+    override var type: Int { data.get2BytesUInt(start: 2) }
+    override var index: Int { data.get2BytesUInt(start: 4) }
+    override var length: Int { 6 }
+    
+    override var description: String { "角色[\(actorId)]学会了[\(type),\(index)]" }
+}
+
+// MARK: 45: Sale
+
+class CmdSale: CommandEmpty {}
 
 // MARK: 46: NPC Move Mod
 
@@ -391,7 +447,7 @@ class CmdNPCMoveMod: CommandBase {
 
     override var length: Int { 4 }
 
-    override var description: String { "\(super.description) 修改NPC[\(npcId)]状态为[\(state.map { String(describing: $0) } ?? "<nil>")]" }
+    override var description: String { "修改NPC[\(npcId)]状态为[\(state.map { String(describing: $0) } ?? "<nil>")]" }
 }
 
 // MARK: 47: Message
@@ -414,7 +470,7 @@ class CmdResumeActorHP: CommandBase {
 
     override var length: Int { 4 }
 
-    override var description: String { "\(super.description) [\(actorId)]HP恢复至 \(hpRate)%" }
+    override var description: String { "[\(actorId)]HP恢复至 \(hpRate)%" }
 }
 
 // MARK: 52: Delete All NPC
@@ -446,7 +502,7 @@ class CmdSetSceneName: CommandBase {
 
     override var length: Int { name.gbkCount + 1 }
 
-    override var description: String { "\(super.description) [\(name)]" }
+    override var description: String { "设置场景名称: [\(name)]" }
 }
 
 // MARK: 55: Show Scene Name
@@ -457,6 +513,18 @@ class CmdShowSceneName: CommandEmpty {}
 
 class CmdShowScreen: CommandEmpty {}
 
+// MARK: 57: Use Goods
+
+class CmdUseGoods: CommandBase {
+    override var type: Int { data.get2BytesUInt(start: 0) }
+    override var index: Int { data.get2BytesUInt(start: 2) }
+    var gotoAddress: Int { data.get2BytesUInt(start: 4) }
+
+    override var length: Int { 6 }
+
+    override var description: String { "使用物品[\(DatLib.shared.getGood(type: type, index: index)?.name ?? "<nil>")], 使用成功则跳转[\(gotoAddress)]" }
+}
+
 // MARK: 61
 
 class CmdShowScript: CommandBase {
@@ -466,7 +534,7 @@ class CmdShowScript: CommandBase {
 
     override var length: Int { 4 + text.gbkCount + 1 }
 
-    override var description: String { "\(super.description) \(top),\(bottom) [\(text)]" }
+    override var description: String { "\(top),\(bottom) [\(text)]" }
 }
 
 // MARK: 64: Menu
@@ -477,7 +545,7 @@ class CmdMenu: CommandBase {
 
     override var length: Int { 2 + text.gbkCount + 1 }
 
-    override var description: String { "\(super.description) 菜单: [\(id)]-\(text)" }
+    override var description: String { "菜单: [\(id)]-\(text)" }
 }
 
 // MARK: 68: Return
@@ -487,11 +555,11 @@ class CmdReturn: CommandEmpty {}
 // MARK: 70: Disaable Save
 
 class CmdDisableSave: CommandEmpty {
-    override var description: String { "\(super.description) 禁止保存" }
+    override var description: String { "禁止保存" }
 }
 
 // MARK: 71: Enable Save
 
 class CmdEnableSave: CommandEmpty {
-    override var description: String { "\(super.description) 允许保存" }
+    override var description: String { "允许保存" }
 }

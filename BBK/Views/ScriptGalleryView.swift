@@ -9,8 +9,11 @@ import SwiftUI
 
 struct ScriptGalleryView: View {
     @State private var typeList: [Int] = []
-    @State private var selectionType: Int = 1
+    @State private var selectionType: Int = 0
     @State private var indexList: [Int] = []
+    @State private var selectionIndex: Int = 0
+    @State private var script: ResScript? = nil
+    @State private var executor: ScriptProcess? = nil
 
     var body: some View {
         HStack {
@@ -20,24 +23,47 @@ struct ScriptGalleryView: View {
                         .tag(type)
                 }
             })
+            .frame(width: 200)
 
-            Form {
+            List(selection: $selectionIndex, content: {
                 ForEach(indexList, id: \.self) { index in
-                    if let script = DatLib.shared.getScript(type: selectionType, index: index) {
-                        Section("Index \(index)", content: {
-                            Text("\(script.description)")
-                            Text("场景事件个数: \(script.numSceneEvent)")
+                    Text("Index \(index)")
+                        .tag(index)
+                }
+            })
+            .frame(width: 200)
 
-                            let executor = ScriptProcess(script: script)
-                        })
+            VStack {
+                if let script = self.script,
+                   let executor = self.executor
+                {
+                    Text("\(script.description)")
+                    Text("场景事件个数: \(script.numSceneEvent)")
+
+                    ForEach(0 ..< executor.commands.count, id: \.self) { i in
+                        HStack {
+                            Text("\(String(describing: type(of: executor.commands[i])))")
+                                .frame(width: 200)
+                            Text("\(executor.commands[i])")
+
+                            Spacer()
+                        }
                     }
+                    Spacer()
                 }
             }
-            .formStyle(.grouped)
+
+            Spacer()
         }
         .onChange(of: selectionType) { _, _ in
-
             indexList = DatLib.shared.dataIndex[ResType.gut.rawValue]?[selectionType] ?? []
+            selectionIndex = 0
+        }
+        .onChange(of: selectionIndex) { _, _ in
+            script = DatLib.shared.getScript(type: selectionType, index: selectionIndex)
+            if let script = self.script {
+                executor = ScriptProcess(script: script)
+            }
         }
         .onAppear {
             typeList = DatLib.shared.dataIndex[ResType.gut.rawValue]?.keys.sorted() ?? []
