@@ -25,14 +25,6 @@ class CommandBase: Command, CustomStringConvertible {
         fatalError("CommandBase#length 是抽象属性...")
     }
 
-    var type: Int {
-        fatalError("")
-    }
-
-    var index: Int {
-        fatalError("")
-    }
-
     var description: String {
         return "【\(String(describing: Swift.type(of: self)))】"
     }
@@ -45,8 +37,8 @@ class CommandEmpty: CommandBase {
 // MARK: 1
 
 class CmdLoadMap: CommandBase {
-    override var type: Int { data.get2BytesUInt(start: 0) }
-    override var index: Int { data.get2BytesUInt(start: 2) }
+    var type: Int { data.get2BytesUInt(start: 0) }
+    var index: Int { data.get2BytesUInt(start: 2) }
     var x: Int { data.get2BytesUInt(start: 4) }
     var y: Int { data.get2BytesUInt(start: 6) }
 
@@ -146,8 +138,8 @@ class CmdSay: CommandBase {
 // MARK: 14: Start Chapter
 
 class CmdStartChapter: CommandBase {
-    override var type: Int { data.get2BytesUInt(start: 0) }
-    override var index: Int { data.get2BytesUInt(start: 2) }
+    var type: Int { data.get2BytesUInt(start: 0) }
+    var index: Int { data.get2BytesUInt(start: 2) }
 
     override var length: Int { 4 }
 
@@ -221,7 +213,7 @@ class CmdBuy: CommandBase {
         var goods: [GoodBase] = []
         for i in 0..<goodIds.count / 2 {
             // 获取方式也不对
-            if let good = DatLib.shared.getGood(type: goodIds[i * 2], index: goodIds[i * 2 + 1]) {
+            if let good = DatLib.shared.getGood(type: .init(rawValue: goodIds[i * 2]), index: goodIds[i * 2 + 1]) {
                 goods.append(good)
             } else {
                 // TODO:
@@ -289,11 +281,11 @@ class CmdDeleteBox: CommandBase {
 // MARK: 34: Gain Goods
 
 class CmdGainGoods: CommandBase {
-    override var type: Int { data.get2BytesUInt(start: 0) }
-    override var index: Int { data.get2BytesUInt(start: 2) }
+    var type: Int { data.get2BytesUInt(start: 0) }
+    var index: Int { data.get2BytesUInt(start: 2) }
     override var length: Int { 4 }
 
-    override var description: String { "获得: [\(DatLib.shared.getGood(type: type, index: index)?.name ?? "")]" }
+    override var description: String { "获得: [\(DatLib.shared.getGood(type: .init(rawValue: type), index: index)?.name ?? "")]" }
 }
 
 // MARK: 35: Init Fight
@@ -423,8 +415,8 @@ class CmdSetMoney: CommandBase {
 
 class CmdLearnMagic: CommandBase {
     var actorId: Int { data.get2BytesUInt(start: 0) }
-    override var type: Int { data.get2BytesUInt(start: 2) }
-    override var index: Int { data.get2BytesUInt(start: 4) }
+    var type: Int { data.get2BytesUInt(start: 2) }
+    var index: Int { data.get2BytesUInt(start: 4) }
     override var length: Int { 6 }
     
     override var description: String { "角色[\(actorId)]学会了[\(type),\(index)]" }
@@ -516,13 +508,13 @@ class CmdShowScreen: CommandEmpty {}
 // MARK: 57: Use Goods
 
 class CmdUseGoods: CommandBase {
-    override var type: Int { data.get2BytesUInt(start: 0) }
-    override var index: Int { data.get2BytesUInt(start: 2) }
+    var type: Int { data.get2BytesUInt(start: 0) }
+    var index: Int { data.get2BytesUInt(start: 2) }
     var gotoAddress: Int { data.get2BytesUInt(start: 4) }
 
     override var length: Int { 6 }
 
-    override var description: String { "使用物品[\(DatLib.shared.getGood(type: type, index: index)?.name ?? "<nil>")], 使用成功则跳转[\(gotoAddress)]" }
+    override var description: String { "使用物品[\(DatLib.shared.getGood(type: .init(rawValue: type), index: index)?.name ?? "<nil>")], 使用成功则跳转[\(gotoAddress)]" }
 }
 
 // MARK: 61

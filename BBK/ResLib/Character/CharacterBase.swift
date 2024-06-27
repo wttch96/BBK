@@ -17,15 +17,30 @@ class CharacterBase: ResBase {
     // 角色的动作状态
     var state: State = .stop
     // 角色在地图中的位置
-    var x: Int = 0
-    var y: Int = 0
+    var pos: (Int, Int) = (0, 0)
+    var x: Int {
+        get { pos.0 }
+        set { pos.0 = newValue }
+    }
+    var y: Int {
+        get { pos.1 }
+        set { pos.1 = newValue }
+    }
     // 角色在地图中的朝向
-    var direction: Direction = .south
+    var direction: Direction = .south {
+        didSet {
+            walkingSprite.direction = direction
+        }
+    }
     
     var walkingSprite: WalkingSprite! {
         didSet {
             walkingSprite.direction = direction
         }
+    }
+    
+    var walkingSpriteId: Int {
+        walkingSprite.id
     }
     
     let data: ResData
@@ -48,5 +63,52 @@ extension CharacterBase {
         case pause = 3
         // 激活状态，只换图片，不改变位置（适合动态的场景对象，比如：伏魔灯）
         case active = 4
+    }
+    
+    /// 角色移动
+    func walk() {
+        walkingSprite.walk()
+        updatePos(direction)
+    }
+    
+    // 角色朝指定方向移动
+    func walk(_ d: Direction) {
+        if self.direction == d {
+            walkingSprite.walk()
+        } else {
+            walkingSprite.walk(d)
+            self.direction = d
+        }
+        updatePos(d)
+    }
+    
+    // 原地踏步, 面向不变
+    func walkStay() {
+        walkingSprite.walk()
+    }
+    
+    // 原地踏步
+    func walkStay(_ d: Direction) {
+        if self.direction == d {
+            walkingSprite.walk()
+        } else {
+            walkingSprite.walk(d)
+            self.direction = d
+        }
+    }
+    
+    func updatePos(_ d: Direction) {
+        switch d {
+        case .east: x += 1
+        case .west: x -= 1
+        case .north: y -= 1
+        case .south: y += 1
+        }
+    }
+    
+    // 脚步:  0—迈左脚；1—立正；2—迈右脚
+    var step: Int {
+        get { walkingSprite.step }
+        set { walkingSprite.step = newValue }
     }
 }

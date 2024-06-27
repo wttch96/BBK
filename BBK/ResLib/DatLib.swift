@@ -55,8 +55,9 @@ class DatLib {
         }
     }
     
-    func getGood(type: Int, index: Int) -> GoodBase? {
-        guard let offset = getDataOffset(resType: ResType.grs.rawValue, type: type, index: index) else { return nil }
+    func getGood(type: GoodType?, index: Int) -> GoodBase? {
+        guard let type = type else { return nil }
+        guard let offset = getDataOffset(resType: ResType.grs.rawValue, type: type.rawValue, index: index) else { return nil }
         
         let good = GoodBase(data: data, offset: offset)
         

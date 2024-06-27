@@ -7,6 +7,12 @@
 
 import Foundation
 
+/// 资源 id
+struct ResID: Hashable {
+    let type: Int
+    let index: Int
+}
+
 struct ResData {
     let data: Data
     let offset: Int
@@ -102,6 +108,10 @@ extension ResData {
             return Int(byte)
         }
     }
+    
+    func get1ByteUInt(start: Int) -> Int {
+        return Int(self[start] & 0xFF)
+    }
 }
 
 
@@ -109,9 +119,6 @@ protocol ResBase {
     init(data: ResData)
     
     var data: ResData { get }
-    
-    var type: Int { get }
-    var index: Int { get }
 }
 
 extension ResBase {
