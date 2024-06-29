@@ -117,9 +117,10 @@ class ScriptProcess {
                 print("尚未实现的 Command[\(cmdIndex)]")
                 break
             }
-            let cmd = cmdType.init(data: code, offset: pointer + 1)
+            let offset = pointer + 1
+            let cmd = cmdType.init(data: code, offset: offset)
             print(cmd)
-            pointer = cmd.nextPos
+            pointer = offset + cmd.length
             commands.append(cmd)
         }
     }

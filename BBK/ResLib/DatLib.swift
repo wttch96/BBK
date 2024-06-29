@@ -36,9 +36,9 @@ class DatLib {
     func getMap(type: Int, index: Int) -> ResMap? {
         guard let offset = getDataOffset(resType: ResType.map.rawValue, type: type, index: index) else { return nil }
         
-        let resMap = self.mapCache[offset] ?? ResMap(data: data, offset: offset)
+        let resMap = mapCache[offset] ?? ResMap(data: data, offset: offset)
         
-        self.mapCache[offset] = resMap
+        mapCache[offset] = resMap
         
         return resMap
     }
@@ -55,13 +55,24 @@ class DatLib {
         }
     }
     
-    func getGood(type: GoodType?, index: Int) -> GoodBase? {
+    func getGoods(type: GoodType?, index: Int) -> Goods? {
         guard let type = type else { return nil }
         guard let offset = getDataOffset(resType: ResType.grs.rawValue, type: type.rawValue, index: index) else { return nil }
         
-        let good = GoodBase(data: data, offset: offset)
+        var extra: (any GoodsExtra.Type)!
         
-        return good
+        switch type {
+        case .helmet: fallthrough
+        case .cloth: fallthrough
+        case .boot: fallthrough
+        case .armor: fallthrough
+        case .brace:
+            extra = GoodsEuqipmentExtra.self
+        default:
+            return nil
+        }
+        
+        return Goods(data: data, offset: offset, extra: { extra.init($0) })
     }
     
     private func getAllResOffset() {
@@ -88,8 +99,8 @@ class DatLib {
             i += 3
             // 读取 block, low, high
             let block = Int(data[j])
-            let low = Int(data[j+1])
-            let high = Int(data[j+2])
+            let low = Int(data[j + 1])
+            let high = Int(data[j + 2])
             j += 3
             // 计算 value
             let value = block * 0x4000 | (high << 8 | low)

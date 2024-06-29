@@ -39,7 +39,7 @@ extension Array where Element == CGImage {
             bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue
         )
         
-        context?.setFillColor(.white)
+        // context?.setFillColor(.white)
         context?.fill([CGRect(origin: .zero, size: CGSize(width: combinedWidth, height: combinedHeight))])
         
         // 绘制每个图像到组合图像上

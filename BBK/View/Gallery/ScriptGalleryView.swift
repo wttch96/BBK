@@ -16,21 +16,23 @@ struct ScriptGalleryView: View {
     @State private var executor: ScriptProcess? = nil
 
     var body: some View {
-        HStack {
-            List(selection: $selectionType, content: {
-                ForEach(typeList, id: \.self) { type in
-                    Text("Type \(type)")
-                        .tag(type)
-                }
-            })
-            .frame(width: 200)
-
-            List(selection: $selectionIndex, content: {
-                ForEach(indexList, id: \.self) { index in
-                    Text("Index \(index)")
-                        .tag(index)
-                }
-            })
+        VStack {
+            HStack {
+                Picker(selection: $selectionType, content: {
+                    ForEach(typeList, id: \.self) { type in
+                        Text("第 \(type) 章")
+                            .tag(type)
+                    }
+                }, label: {
+                    
+                })
+                Picker(selection: $selectionIndex, content: {
+                    ForEach(indexList, id: \.self) { index in
+                        Text("第 \(index) 节")
+                            .tag(index)
+                    }
+                }, label: { })
+            }
             .frame(width: 200)
 
             VStack {

@@ -7,6 +7,27 @@
 
 import Foundation
 
+
+/// 基础数据格式。
+/// 只保留了 Data，目前使用的是 subdata (好想会进行拷贝)，可以考虑 subscript 但是要处理索引。
+protocol BaseResData {
+    var data: Data { get }
+    
+    init(_ data: Data)
+}
+
+extension BaseResData {
+    /// 从给定数据的指定位置截取后续所有数据。
+    /// 可以考虑长度？每次全拿来好像数据过长。
+    /// - Parameters:
+    ///   - data: 原始数据
+    ///   - start: 要截取的数据开始位置
+    init(data: Data, start: Int) {
+        self.init(data.subdata(in: start..<data.count))
+    }
+}
+
+
 /// 资源 id
 struct ResID: Hashable {
     let type: Int
@@ -18,16 +39,16 @@ struct ResData {
     let offset: Int
     
     init(data: Data, offset: Int) {
-        self.data = Data(data[offset..<data.count])
+        self.data = data[offset..<data.count]
         self.offset = offset
     }
     
     @inlinable subscript (index: Data.Index) -> UInt8 {
-        return data[index]
+        return data[data.startIndex.advanced(by: index)]
     }
     
     @inlinable subscript (bounds: Range<Data.Index>) -> Data {
-        return data[bounds]
+        return data[data.startIndex.advanced(by: bounds.lowerBound)..<data.startIndex.advanced(by: bounds.upperBound)]
     }
     
     @inlinable var count: Int { data.count }
@@ -98,14 +119,15 @@ extension ResData {
     }
     
     func get1ByteInt(start: Int) -> Int {
-        let byte = Int16(self[start]) & 0x7F
+        let byte = Int16(self[start])
+        let value = Int16(self[start]) & 0x7F
 
         if (byte & 0x80) != 0 {
             // 如果最高位为 1，表示负数
-            return Int(-byte)
+            return Int(-value)
         } else {
             // 返回正数
-            return Int(byte)
+            return Int(value)
         }
     }
     

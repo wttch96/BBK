@@ -20,20 +20,6 @@
          contextName = "ResScript.init(data:offset:):ResScript.swift">
       </ContextState>
       <ContextState
-         contextName = "WalkingSprite.getImage():WalkingSprite.swift">
-      </ContextState>
-      <ContextState
-         contextName = "ResMap.getTileIndex(x:y:):ResMap.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "mapData[y][x] &amp; 0x7F00">
-            </PersistentString>
-            <PersistentString
-               value = "mapData[y][x]">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "ResData.subscript.getter:ResBase.swift">
          <PersistentStrings>
             <PersistentString
@@ -43,9 +29,23 @@
                value = "data">
             </PersistentString>
             <PersistentString
-               value = "data[0]">
+               value = "data[1]">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ResMap.getTileIndex(x:y:):ResMap.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "mapData[y][x]">
+            </PersistentString>
+            <PersistentString
+               value = "mapData[y][x] &amp; 0x7F00">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "DatLib.getAllResOffset():DatLib.swift">
       </ContextState>
       <ContextState
          contextName = "DatLib.init(url:):DatLib.swift">
@@ -54,7 +54,7 @@
          contextName = "ResImage.createImage():ResImage.swift">
       </ContextState>
       <ContextState
-         contextName = "DatLib.getAllResOffset():DatLib.swift">
+         contextName = "WalkingSprite.getImage():WalkingSprite.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

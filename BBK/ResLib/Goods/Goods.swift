@@ -1,5 +1,5 @@
 //
-//  GoodBase.swift
+//  Goods.swift
 //  BBK
 //
 //  Created by Wttch on 2024/6/17.
@@ -7,8 +7,7 @@
 
 import Foundation
 
-// MARK: 数据
-struct GoodBase: Identifiable {
+struct Goods: Identifiable {
     // id
     var id: ResID
     // 原始数据等
@@ -29,10 +28,16 @@ struct GoodBase: Identifiable {
     let description: String
     // 事件 id： 不为0时装备该道具时，就会设置该事件，而卸下时， 就会取消该事件，不能用来典当
     let eventId: Int
+    
+    let extra: any GoodsExtra
 }
 
-extension GoodBase {
-    init(data: Data, offset: Int) {
+protocol GoodsExtra {
+    init(_ data: ResData)
+}
+
+extension Goods {
+    init(data: Data, offset: Int, extra: (ResData) -> any GoodsExtra) {
         self.data = ResData(data: data, offset: offset)
         self.id = ResID(type: Int(self.data[0]), index: Int(self.data[1]))
      
@@ -44,5 +49,6 @@ extension GoodBase {
         self.sellPrice = self.data.get2BytesUInt(start: 0x14)
         self.description = self.data.getString(start: 0x1e)
         self.eventId = self.data.get2BytesUInt(start: 0x84)
+        self.extra = extra(self.data)
     }
 }

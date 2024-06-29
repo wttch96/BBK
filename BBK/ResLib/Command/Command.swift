@@ -9,6 +9,8 @@ import Foundation
 
 protocol Command: ResBase {
     var nextPos: Int { get }
+    
+    var length: Int { get }
 }
 
 class CommandBase: Command, CustomStringConvertible {
@@ -209,11 +211,11 @@ class CmdBuy: CommandBase {
 
     override var description: String { "购买: \(goods.map { $0.name })" }
 
-    var goods: [GoodBase] {
-        var goods: [GoodBase] = []
+    var goods: [Goods] {
+        var goods: [Goods] = []
         for i in 0..<goodIds.count / 2 {
             // 获取方式也不对
-            if let good = DatLib.shared.getGood(type: .init(rawValue: goodIds[i * 2]), index: goodIds[i * 2 + 1]) {
+            if let good = DatLib.shared.getGoods(type: .init(rawValue: goodIds[i * 2]), index: goodIds[i * 2 + 1]) {
                 goods.append(good)
             } else {
                 // TODO:
@@ -285,7 +287,7 @@ class CmdGainGoods: CommandBase {
     var index: Int { data.get2BytesUInt(start: 2) }
     override var length: Int { 4 }
 
-    override var description: String { "获得: [\(DatLib.shared.getGood(type: .init(rawValue: type), index: index)?.name ?? "")]" }
+    override var description: String { "获得: [\(DatLib.shared.getGoods(type: .init(rawValue: type), index: index)?.name ?? "")]" }
 }
 
 // MARK: 35: Init Fight
@@ -514,7 +516,7 @@ class CmdUseGoods: CommandBase {
 
     override var length: Int { 6 }
 
-    override var description: String { "使用物品[\(DatLib.shared.getGood(type: .init(rawValue: type), index: index)?.name ?? "<nil>")], 使用成功则跳转[\(gotoAddress)]" }
+    override var description: String { "使用物品[\(DatLib.shared.getGoods(type: .init(rawValue: type), index: index)?.name ?? "<nil>")], 使用成功则跳转[\(gotoAddress)]" }
 }
 
 // MARK: 61
