@@ -89,10 +89,10 @@ class ScriptProcess {
         nil, // 77
     ]
     
-    let script: ResScript
+    let script: ScriptResData
     var commands: [Command] = []
     
-    init(script: ResScript) {
+    init(script: ScriptResData) {
         self.script = script
         
         getExecutor()

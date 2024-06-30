@@ -12,7 +12,7 @@ struct ScriptGalleryView: View {
     @State private var selectionType: Int = 0
     @State private var indexList: [Int] = []
     @State private var selectionIndex: Int = 0
-    @State private var script: ResScript? = nil
+    @State private var script: ScriptResData? = nil
     @State private var executor: ScriptProcess? = nil
 
     var body: some View {

@@ -24,8 +24,19 @@ class ResMap: ResBase {
     // 地图数据 两个字节表示一个地图块（从左到右，从上到下） （低字节：最高位1表示可行走，0不可行走。高字节：事件号）
     let mapData: [[[UInt8]]]
     
-    var images: [[CGImage?]] = []
-    var image: CGImage? = nil
+    // var images: [[CGImage?]] = []
+    var image: CGImage? {
+        
+        var images = Array(repeating: Array(repeating: nil as CGImage?, count: width), count: height)
+        for y in 0..<height {
+            for x in 0..<width {
+                let image = DatLib.shared.getImage(resType: .til, type: 1, index: tileIndex)?.images[min(126, getTileIndex(x: x, y: y))]
+                images[y][x] = image
+            }
+        }
+        
+        return images.map({ $0.map({$0!})}).combine(imageWidth: 16, imageHeight: 16)
+    }
     
     var eventIds: [[Int]] = []
     
@@ -50,17 +61,7 @@ class ResMap: ResBase {
         }
         self.mapData = mapData
         
-        
-        images = Array(repeating: Array(repeating: nil, count: width), count: height)
-        for y in 0..<height {
-            for x in 0..<width {
-                let image = DatLib.shared.getImage(resType: .til, type: 1, index: tileIndex)?.images[min(126, getTileIndex(x: x, y: y))]
-                self.images[y][x] = image
-            }
-        }
-        
-        self.image = self.images.map({ $0.map({$0!})}).combine(imageWidth: 16, imageHeight: 16)
-        
+   
         eventIds = Array(repeating: Array(repeating: 0, count: width), count: height)
         for y in 0..<height {
             for x in 0..<width {

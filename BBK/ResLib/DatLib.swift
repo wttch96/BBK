@@ -35,6 +35,7 @@ class DatLib {
     }
     
     private func loadImages() {
+        let time = Date()
         print("开始加载 images..")
         let imageTypes: [ResType] = [.til, .acp, .gdp, .ggj, .pic]
         for t in imageTypes {
@@ -46,7 +47,7 @@ class DatLib {
                 }
             }
         }
-        print("image 资源加载完毕")
+        print("image 资源加载完毕, 用时:\(Date().timeIntervalSince1970 - time.timeIntervalSince1970)")
     }
     
     private func loadImage(resType: ResType, type: Int, index: Int) -> ImageResData? {
@@ -57,10 +58,10 @@ class DatLib {
         return image
     }
     
-    func getScript(type: Int, index: Int) -> ResScript? {
+    func getScript(type: Int, index: Int) -> ScriptResData? {
         guard let offset = getDataOffset(resType: ResType.gut.rawValue, type: type, index: index) else { return nil }
         
-        return ResScript(data: data, offset: offset)
+        return ScriptResData(data: data, start: offset)
     }
     
     func getMap(type: Int, index: Int) -> ResMap? {

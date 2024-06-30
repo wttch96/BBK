@@ -40,7 +40,7 @@ extension Array where Element == CGImage {
         )
         
         // context?.setFillColor(.white)
-        context?.fill([CGRect(origin: .zero, size: CGSize(width: combinedWidth, height: combinedHeight))])
+        // context?.fill([CGRect(origin: .zero, size: CGSize(width: combinedWidth, height: combinedHeight))])
         
         // 绘制每个图像到组合图像上
         for (index, image) in self.enumerated() {
