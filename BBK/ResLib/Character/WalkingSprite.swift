@@ -12,13 +12,12 @@ class WalkingSprite {
     // 脚步的偏移
     private static let STEP_OFFSET = [0, 1, 2, 1]
     // 图片资源
-    private let resImage: ResImage
+    private let resImage: ImageResData
     // 面向的偏移
     private var offset: Int = 1
     // 脚步
     private var stepIndex: Int = 0
     
-    var id: Int { resImage.index }
     
     init(type: Int, index: Int) {
         guard let resImage = DatLib.shared.getImage(resType: .acp, type: type, index: index) else {

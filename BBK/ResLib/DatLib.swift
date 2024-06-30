@@ -15,16 +15,46 @@ class DatLib {
     
     var dataIndex: [Int: [Int: [Int]]] = [:]
     
-    private var imageCache: [Int: ResImage] = [:]
     private var mapCache: [Int: ResMap] = [:]
     
     static let shared = DatLib(url: Bundle.main.url(forResource: "DAT", withExtension: ".LIB")!)
+    
+    private var images: [ResType: [Int: [Int:ImageResData]]] = [:]
     
     private init(url: URL) {
         self.url = url
         self.data = try! Data(contentsOf: url)
         
+        loadData()
+    }
+    
+    func loadData() {
         getAllResOffset()
+        
+        loadImages()
+    }
+    
+    private func loadImages() {
+        print("开始加载 images..")
+        let imageTypes: [ResType] = [.til, .acp, .gdp, .ggj, .pic]
+        for t in imageTypes {
+            images[t] = [:]
+            for (type, indeies) in dataIndex[t.rawValue] ?? [:] {
+                images[t]![type] = [:]
+                for index in indeies {
+                    images[t]![type]![index] = loadImage(resType: t, type: type, index: index)
+                }
+            }
+        }
+        print("image 资源加载完毕")
+    }
+    
+    private func loadImage(resType: ResType, type: Int, index: Int) -> ImageResData? {
+        guard let offset = getDataOffset(resType: resType.rawValue, type: type, index: index) else { return nil }
+        let key = getKey(resType: resType.rawValue, type: type, index: index)
+    
+        let image = ImageResData(data: data, start: offset)
+        return image
     }
     
     func getScript(type: Int, index: Int) -> ResScript? {
@@ -43,16 +73,8 @@ class DatLib {
         return resMap
     }
     
-    func getImage(resType: ResType, type: Int, index: Int) -> ResImage? {
-        guard let offset = getDataOffset(resType: resType.rawValue, type: type, index: index) else { return nil }
-        let key = getKey(resType: resType.rawValue, type: type, index: index)
-        if let cache = imageCache[key] {
-            return cache
-        } else {
-            let image = ResImage(data: data, offset: offset)
-            imageCache[key] = image
-            return image
-        }
+    func getImage(resType: ResType, type: Int, index: Int) -> ImageResData? {
+        return images[resType]?[type]?[index]
     }
     
     func getGoods(type: GoodType?, index: Int) -> Goods? {

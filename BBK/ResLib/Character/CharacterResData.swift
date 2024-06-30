@@ -61,7 +61,8 @@ class CharacterBase: ResBase {
     }
     
     var walkingSpriteId: Int {
-        walkingSprite.id
+        // "walkingSprite.id"
+        return 0
     }
     
     let data: ResData
