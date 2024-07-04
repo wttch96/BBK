@@ -10,16 +10,16 @@ import Foundation
 
 /// 图片集数据。
 struct ImageResData: BaseResData {
-    let data: Data
-    
-    // 单张图片宽度
+    /// 单张图片宽度
     let width: Int
-    // 单张图片高度
+    /// 单张图片高度
     let height: Int
-    // 图片数量
+    /// 图片数量
     let number: Int
-    // 是否透明
+    /// 是否透明
     let transparent: Bool
+    /// 图片集
+    private(set) var images: [CGImage] = []
 }
 
 extension ImageResData {
@@ -30,29 +30,13 @@ extension ImageResData {
         self.height = Int(data[3])
         self.number = Int(data[4])
         self.transparent = data[5] == 2
-        let length = number * Int(ceil(Float(width) / 8 )) * height * Int(data[5])
         
-        self.data = data.subdata(in: 0..<6+length)
+        loadImages(imageData: Data(data[6..<6 + imageDataLength]))
     }
     
-    private var bytesPerPixel: Int { transparent ? 2 : 1 }
-    
-    // 每一行需要的 byte 个数
-    private var lineBytes: Int { Int(ceil(Float(width) / 8)) * bytesPerPixel }
-    
-    // 图片数据总长度, 如果包含长宽等信息 需要再加 6
-    var length: Int {
-        return number * Int(ceil(Float(width) / 8 )) * height * bytesPerPixel
-    }
-    
-    var image: CGImage? {
-        return images.combine(imageWidth: self.width, imageHeight: self.height, columnCount: 10)
-    }
-    
-    var images: [CGImage] {
-        let imageData = Data(data[6..<6 + length])
-        var images: [CGImage] = []
-        
+    /// 加载图片
+    private mutating func loadImages(imageData: Data) {
+        images = []
         for i in 0..<number {
             // 像素数组
             var pixels: [UInt32] = []
@@ -77,7 +61,7 @@ extension ImageResData {
                         return linePixel
                     } else {
                         // 不透明 1byte 8个像素点// byte 处理
-                        return (0..<8).map({ ((byte << $0) & 0x80) != 0 ? 0xFF000000 : 0xFFFFFFFF })
+                        return (0..<8).map { ((byte << $0) & 0x80) != 0 ? 0xFF000000 : 0xFFFFFFFF }
                     }
                 }
                 pixels.append(contentsOf: linePixel[0..<width])
@@ -86,10 +70,24 @@ extension ImageResData {
                 images.append(image)
             }
         }
-        
-        return images
     }
     
+    /// 每个像素所使用的数据字节数
+    /// 如果有透明数据则2个字节，否则1个字节
+    private var bytesPerPixel: Int { transparent ? 2 : 1 }
+    
+    // 每一行需要的 byte 个数
+    private var lineBytes: Int { Int(ceil(Float(width) / 8)) * bytesPerPixel }
+    
+    // 图片数据总长度, 如果包含长宽等信息 需要再加 6
+    var imageDataLength: Int {
+        return number * Int(ceil(Float(width) / 8)) * height * bytesPerPixel
+    }
+    
+    // 计算变量一定要快
+    var image: CGImage? {
+        return images.combine(imageWidth: width, imageHeight: height, columnCount: 10)
+    }
     
     private func imageFromARGB32Bitmap(pixels: [UInt32], width: Int, height: Int) -> CGImage? {
         let bitsPerComponent = 8

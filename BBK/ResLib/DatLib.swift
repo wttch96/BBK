@@ -15,7 +15,7 @@ class DatLib {
     
     var dataIndex: [Int: [Int: [Int]]] = [:]
     
-    private var mapCache: [Int: ResMap] = [:]
+    private var mapCache: [Int: MapResData] = [:]
     
     static let shared = DatLib(url: Bundle.main.url(forResource: "DAT", withExtension: ".LIB")!)
     
@@ -52,10 +52,7 @@ class DatLib {
     
     private func loadImage(resType: ResType, type: Int, index: Int) -> ImageResData? {
         guard let offset = getDataOffset(resType: resType.rawValue, type: type, index: index) else { return nil }
-        let key = getKey(resType: resType.rawValue, type: type, index: index)
-    
-        let image = ImageResData(data: data, start: offset)
-        return image
+        return ImageResData(data: data, start: offset)
     }
     
     func getScript(type: Int, index: Int) -> ScriptResData? {
@@ -64,10 +61,10 @@ class DatLib {
         return ScriptResData(data: data, start: offset)
     }
     
-    func getMap(type: Int, index: Int) -> ResMap? {
+    func getMap(type: Int, index: Int) -> MapResData? {
         guard let offset = getDataOffset(resType: ResType.map.rawValue, type: type, index: index) else { return nil }
         
-        let resMap = mapCache[offset] ?? ResMap(data: data, offset: offset)
+        let resMap = mapCache[offset] ?? MapResData(data: data, start: offset)
         
         mapCache[offset] = resMap
         

@@ -25,7 +25,7 @@ struct ScriptResData: BaseResData {
     init(_ data: Data) {
         // type 0
         // index 1
-        self.description = data.getString(start: 2)
+        self.description = data.string(start: 2)
         self.length = data.get2BytesUInt(start: 0x18)
         self.numSceneEvent = data.get1ByteInt(start: 0x1a)
         var sceneEvents: [Int] = Array(repeating: 0, count: self.numSceneEvent)

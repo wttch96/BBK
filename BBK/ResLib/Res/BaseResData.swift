@@ -9,9 +9,11 @@ import Foundation
 
 
 /// 基础数据格式。
+///
+/// 现在删除 Data 全部解析都要在初始化中完成
 /// 只保留了 Data，目前使用的是 subdata (好想会进行拷贝)，可以考虑 subscript 但是要处理索引。
 protocol BaseResData {
-    var data: Data { get }
+    // var data: Data { get }
     
     init(_ data: Data)
 }

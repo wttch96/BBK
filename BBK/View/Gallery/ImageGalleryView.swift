@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct ImageGalleryView: View {
+    /// 图片资源类型
     let resType: ResType
     
     @State private var type: Int = 1
@@ -17,12 +18,6 @@ struct ImageGalleryView: View {
     
     var body: some View {
         NavigationSplitView(sidebar: {
-            List(selection: $type, content: {
-                ForEach(indexes.keys.sorted(), id: \.self, content: { k in
-                    Text("Type: \(k)")
-                        .tag(k)
-                })
-            })
         }, detail: {
             Form {
                 ForEach(selectIndexes, id: \.self, content: { index in
@@ -58,6 +53,16 @@ struct ImageGalleryView: View {
             }
             .formStyle(.grouped)
         })
+        .toolbar {
+            ToolbarItem(placement: .navigation, content: {
+                Picker("", selection: $type, content: {
+                    ForEach(indexes.keys.sorted(), id: \.self, content: { k in
+                        Text("Type: \(k)")
+                            .tag(k)
+                    })
+                })
+            })
+        }
     }
     
     private var indexes: [Int: [Int]] {
@@ -67,6 +72,10 @@ struct ImageGalleryView: View {
     private var selectIndexes: [Int] {
         return (DatLib.shared.dataIndex[resType.rawValue] ?? [:])[type] ?? []
     }
+}
+
+extension ImageGalleryView {
+    
 }
 
 #Preview {

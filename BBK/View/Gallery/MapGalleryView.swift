@@ -45,11 +45,12 @@ struct MapGalleryView: View {
 
 
 struct MapView: View {
-    let map: ResMap
+    let map: MapResData
     
     @State private var showMap = false
     @State private var tapX: Int = 0
     @State private var tapY: Int = 0
+    @State private var mapImage: CGImage? = nil
     
     var body: some View {
         Section(map.name, content: {
@@ -58,15 +59,26 @@ struct MapView: View {
                     Text("地图大小: \(map.width) * \(map.height)")
                     Text("地图贴图Index: \(map.tileIndex)")
                     Button("显示地图", action: {
+                        print("显示地图")
                         showMap.toggle()
+                        DispatchQueue.global(qos: .background).async {
+                            print("加载地图")
+                            let mapImage = map.loadMapImage()
+                            print("加载完成")
+                            DispatchQueue.main.async {
+                                self.mapImage = mapImage
+                            }
+                        }
                     })
                     if showMap {
                         ZStack(alignment: .topLeading) {
-                            Image(map.image!, scale: 1, label: Text(""))
-                                .gesture(SpatialTapGesture().onEnded({ loc in
-                                    self.tapX = Int(loc.location.x) / 16
-                                    self.tapY = Int(loc.location.y) / 16
-                                }))
+                            if let mapImage = mapImage {
+                                Image(mapImage, scale: 1, label: Text(""))
+                                    .gesture(SpatialTapGesture().onEnded({ loc in
+                                        self.tapX = Int(loc.location.x) / 16
+                                        self.tapY = Int(loc.location.y) / 16
+                                    }))
+                            }
                             
 //                            ForEach(0..<map.height, id: \.self) { y in
 //                                ForEach(0..<map.width, id: \.self) { x in

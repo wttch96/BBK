@@ -43,7 +43,7 @@ extension Data {
         return result
     }
     
-    func getString(start: Int) -> String {
+    func string(start: Int) -> String {
         guard checkIndex(start) else {
             return ""
         }
@@ -107,5 +107,13 @@ extension Data {
             // 返回正数
             return Int(byte)
         }
+    }
+    
+    
+    /// 从给定位置获取一个无符号一位整型数字。
+    /// - Parameter start: 数据所在的开始位置
+    /// - Returns: 获取到的无符号整型数字
+    func uint8(start: Int) -> Int {
+        return Int(self[start])
     }
 }

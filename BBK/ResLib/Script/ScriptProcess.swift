@@ -105,7 +105,7 @@ class ScriptProcess {
         // offsetAddr --> index of operate
         var map: [Int: Int] = [:]
         var iOfOperator = 0
-        var operatorList: [Int] = []
+        // var operatorList: [Int] = []
         
         while pointer < code.count {
             map[pointer] = iOfOperator
