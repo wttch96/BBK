@@ -11,6 +11,8 @@ import Foundation
 
 /// 地图的数据信息
 struct MapResData: BaseResData {
+    private let type: Int
+    private let index: Int
     
     /// 使用的图块资源的索引号
     let tileIndex: Int
@@ -28,8 +30,8 @@ struct MapResData: BaseResData {
     let eventIds: [[Int]]
     
     init(_ data: Data) {
-        // type: data[0]
-        // index: data[1]
+        self.type = data.uint8(start: 0)
+        self.index = data.uint8(start: 1)
         self.tileIndex = data.uint8(start: 2)
         self.name = data.string(start: 3)
         self.width = data.uint8(start: 0x10)
@@ -85,5 +87,12 @@ extension MapResData {
             images.append(lineImages)
         }
         return images.combine(imageWidth: 16, imageHeight: 16)
+    }
+}
+
+
+extension MapResData: Equatable {
+    static func ==(lhs: MapResData, rhs: MapResData) -> Bool {
+        return lhs.type == rhs.type && lhs.index == rhs.index
     }
 }
