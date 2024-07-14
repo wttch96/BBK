@@ -18,7 +18,7 @@
 		490AA9E32C2EA2E3005053CE /* BBK_FMJUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490AA9E22C2EA2E3005053CE /* BBK_FMJUITests.swift */; };
 		490AA9E52C2EA2E3005053CE /* BBK_FMJUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490AA9E42C2EA2E3005053CE /* BBK_FMJUITestsLaunchTests.swift */; };
 		491B37E72C30315E00A6EA6A /* NPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491B37E62C30315E00A6EA6A /* NPC.swift */; };
-		491B37E92C3069DF00A6EA6A /* FightingCharacterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491B37E82C3069DF00A6EA6A /* FightingCharacterData.swift */; };
+		491B37E92C3069DF00A6EA6A /* FightingCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491B37E82C3069DF00A6EA6A /* FightingCharacter.swift */; };
 		491B37EB2C306BBA00A6EA6A /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491B37EA2C306BBA00A6EA6A /* Player.swift */; };
 		4954E42B2C1BC5C4008E99B8 /* BBKApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4954E42A2C1BC5C4008E99B8 /* BBKApp.swift */; };
 		4954E42D2C1BC5C4008E99B8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4954E42C2C1BC5C4008E99B8 /* ContentView.swift */; };
@@ -43,11 +43,18 @@
 		4954E4772C2191E1008E99B8 /* ScriptProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4954E4762C2191E1008E99B8 /* ScriptProcess.swift */; };
 		4954E4792C21AB48008E99B8 /* ScriptGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4954E4782C21AB48008E99B8 /* ScriptGalleryView.swift */; };
 		4954E47C2C22ADE8008E99B8 /* ArsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4954E47B2C22ADE8008E99B8 /* ArsType.swift */; };
-		4954E47F2C22B000008E99B8 /* CharacterResData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4954E47E2C22B000008E99B8 /* CharacterResData.swift */; };
+		4954E47F2C22B000008E99B8 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4954E47E2C22B000008E99B8 /* Character.swift */; };
 		4954E4812C22B26C008E99B8 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4954E4802C22B26C008E99B8 /* Direction.swift */; };
 		4954E4832C22B4C9008E99B8 /* WalkingSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4954E4822C22B4C9008E99B8 /* WalkingSprite.swift */; };
 		4954E4852C22D520008E99B8 /* DataUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4954E4842C22D520008E99B8 /* DataUtil.swift */; };
 		49D5AD062C340549000F6408 /* ArrayUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D5AD052C340549000F6408 /* ArrayUtil.swift */; };
+		49D5AD102C403B65000F6408 /* FMJTileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 49D5AD0F2C403B65000F6408 /* FMJTileSet.sks */; };
+		49D5AD122C403BF9000F6408 /* 1-2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 49D5AD112C403BF9000F6408 /* 1-2.sks */; };
+		49DE49AB2C43B65E00EB84D7 /* BlobTileSetLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE49AA2C43B65E00EB84D7 /* BlobTileSetLoader.swift */; };
+		49DE49AF2C43BA8A00EB84D7 /* BlobCropping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE49AE2C43BA8A00EB84D7 /* BlobCropping.swift */; };
+		49DE49B12C43BA9500EB84D7 /* CGImageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE49B02C43BA9500EB84D7 /* CGImageUtil.swift */; };
+		49DE49B42C43BD1A00EB84D7 /* 1-2.json in Resources */ = {isa = PBXBuildFile; fileRef = 49DE49B32C43BD1A00EB84D7 /* 1-2.json */; };
+		49DE49B72C43BD6D00EB84D7 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE49B62C43BD6D00EB84D7 /* Map.swift */; };
 		49E457662C2C69C600B01FC9 /* GoodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E457652C2C69C600B01FC9 /* GoodType.swift */; };
 		49E457682C2CFDF900B01FC9 /* GoodEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E457672C2CFDF900B01FC9 /* GoodEquipment.swift */; };
 		49E4576D2C2DBF9E00B01FC9 /* GoodsEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4576C2C2DBF9E00B01FC9 /* GoodsEffect.swift */; };
@@ -100,7 +107,7 @@
 		490AA9E22C2EA2E3005053CE /* BBK_FMJUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBK_FMJUITests.swift; sourceTree = "<group>"; };
 		490AA9E42C2EA2E3005053CE /* BBK_FMJUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBK_FMJUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		491B37E62C30315E00A6EA6A /* NPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NPC.swift; sourceTree = "<group>"; };
-		491B37E82C3069DF00A6EA6A /* FightingCharacterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightingCharacterData.swift; sourceTree = "<group>"; };
+		491B37E82C3069DF00A6EA6A /* FightingCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightingCharacter.swift; sourceTree = "<group>"; };
 		491B37EA2C306BBA00A6EA6A /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		4954E4272C1BC5C4008E99B8 /* BBK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BBK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4954E42A2C1BC5C4008E99B8 /* BBKApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBKApp.swift; sourceTree = "<group>"; };
@@ -129,11 +136,18 @@
 		4954E4762C2191E1008E99B8 /* ScriptProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptProcess.swift; sourceTree = "<group>"; };
 		4954E4782C21AB48008E99B8 /* ScriptGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptGalleryView.swift; sourceTree = "<group>"; };
 		4954E47B2C22ADE8008E99B8 /* ArsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArsType.swift; sourceTree = "<group>"; };
-		4954E47E2C22B000008E99B8 /* CharacterResData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterResData.swift; sourceTree = "<group>"; };
+		4954E47E2C22B000008E99B8 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		4954E4802C22B26C008E99B8 /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		4954E4822C22B4C9008E99B8 /* WalkingSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingSprite.swift; sourceTree = "<group>"; };
 		4954E4842C22D520008E99B8 /* DataUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUtil.swift; sourceTree = "<group>"; };
 		49D5AD052C340549000F6408 /* ArrayUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayUtil.swift; sourceTree = "<group>"; };
+		49D5AD0F2C403B65000F6408 /* FMJTileSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FMJTileSet.sks; sourceTree = "<group>"; };
+		49D5AD112C403BF9000F6408 /* 1-2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "1-2.sks"; sourceTree = "<group>"; };
+		49DE49AA2C43B65E00EB84D7 /* BlobTileSetLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlobTileSetLoader.swift; sourceTree = "<group>"; };
+		49DE49AE2C43BA8A00EB84D7 /* BlobCropping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlobCropping.swift; sourceTree = "<group>"; };
+		49DE49B02C43BA9500EB84D7 /* CGImageUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGImageUtil.swift; sourceTree = "<group>"; };
+		49DE49B32C43BD1A00EB84D7 /* 1-2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "1-2.json"; sourceTree = "<group>"; };
+		49DE49B62C43BD6D00EB84D7 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		49E457652C2C69C600B01FC9 /* GoodType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodType.swift; sourceTree = "<group>"; };
 		49E457672C2CFDF900B01FC9 /* GoodEquipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodEquipment.swift; sourceTree = "<group>"; };
 		49E4576C2C2DBF9E00B01FC9 /* GoodsEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsEffect.swift; sourceTree = "<group>"; };
@@ -188,6 +202,9 @@
 		490AA9BF2C2EA2E1005053CE /* BBK-FMJ */ = {
 			isa = PBXGroup;
 			children = (
+				49DE49B52C43BD5600EB84D7 /* Entity */,
+				49DE49B22C43BCF200EB84D7 /* Map */,
+				49DE49A92C43B64100EB84D7 /* Util */,
 				490AA9C02C2EA2E1005053CE /* AppDelegate.swift */,
 				490AA9C22C2EA2E1005053CE /* GameScene.sks */,
 				490AA9C42C2EA2E1005053CE /* Actions.sks */,
@@ -196,6 +213,8 @@
 				490AA9CA2C2EA2E3005053CE /* Assets.xcassets */,
 				490AA9CC2C2EA2E3005053CE /* Main.storyboard */,
 				490AA9CF2C2EA2E3005053CE /* BBK_FMJ.entitlements */,
+				49D5AD0F2C403B65000F6408 /* FMJTileSet.sks */,
+				49D5AD112C403BF9000F6408 /* 1-2.sks */,
 			);
 			path = "BBK-FMJ";
 			sourceTree = "<group>";
@@ -220,6 +239,7 @@
 		4954E41E2C1BC5C4008E99B8 = {
 			isa = PBXGroup;
 			children = (
+				49DE49AC2C43B9E200EB84D7 /* TileSetEditor */,
 				4954E4292C1BC5C4008E99B8 /* BBK */,
 				4954E43B2C1BC5C6008E99B8 /* BBKTests */,
 				4954E4452C1BC5C6008E99B8 /* BBKUITests */,
@@ -367,13 +387,54 @@
 		4954E47D2C22AFF2008E99B8 /* Character */ = {
 			isa = PBXGroup;
 			children = (
-				4954E47E2C22B000008E99B8 /* CharacterResData.swift */,
-				491B37E82C3069DF00A6EA6A /* FightingCharacterData.swift */,
+				4954E47E2C22B000008E99B8 /* Character.swift */,
+				491B37E82C3069DF00A6EA6A /* FightingCharacter.swift */,
 				491B37EA2C306BBA00A6EA6A /* Player.swift */,
 				4954E4822C22B4C9008E99B8 /* WalkingSprite.swift */,
 				491B37E62C30315E00A6EA6A /* NPC.swift */,
 			);
 			path = Character;
+			sourceTree = "<group>";
+		};
+		49DE49A92C43B64100EB84D7 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				49DE49AA2C43B65E00EB84D7 /* BlobTileSetLoader.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		49DE49AC2C43B9E200EB84D7 /* TileSetEditor */ = {
+			isa = PBXGroup;
+			children = (
+				49DE49AD2C43BA0300EB84D7 /* Util */,
+			);
+			path = TileSetEditor;
+			sourceTree = "<group>";
+		};
+		49DE49AD2C43BA0300EB84D7 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				49DE49B02C43BA9500EB84D7 /* CGImageUtil.swift */,
+				49DE49AE2C43BA8A00EB84D7 /* BlobCropping.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		49DE49B22C43BCF200EB84D7 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				49DE49B32C43BD1A00EB84D7 /* 1-2.json */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		49DE49B52C43BD5600EB84D7 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				49DE49B62C43BD6D00EB84D7 /* Map.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		49E457692C2D095000B01FC9 /* Gallery */ = {
@@ -558,8 +619,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49D5AD122C403BF9000F6408 /* 1-2.sks in Resources */,
 				490AA9C32C2EA2E1005053CE /* GameScene.sks in Resources */,
 				490AA9CB2C2EA2E3005053CE /* Assets.xcassets in Resources */,
+				49DE49B42C43BD1A00EB84D7 /* 1-2.json in Resources */,
+				49D5AD102C403B65000F6408 /* FMJTileSet.sks in Resources */,
 				490AA9C52C2EA2E1005053CE /* Actions.sks in Resources */,
 				490AA9CE2C2EA2E3005053CE /* Base in Resources */,
 			);
@@ -611,8 +675,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				490AA9C92C2EA2E1005053CE /* ViewController.swift in Sources */,
+				49DE49AB2C43B65E00EB84D7 /* BlobTileSetLoader.swift in Sources */,
 				490AA9C72C2EA2E1005053CE /* GameScene.swift in Sources */,
+				49DE49B72C43BD6D00EB84D7 /* Map.swift in Sources */,
+				49DE49B12C43BA9500EB84D7 /* CGImageUtil.swift in Sources */,
 				490AA9C12C2EA2E1005053CE /* AppDelegate.swift in Sources */,
+				49DE49AF2C43BA8A00EB84D7 /* BlobCropping.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -649,11 +717,11 @@
 				4954E46C2C1FED83008E99B8 /* MapResData.swift in Sources */,
 				4954E4772C2191E1008E99B8 /* ScriptProcess.swift in Sources */,
 				49D5AD062C340549000F6408 /* ArrayUtil.swift in Sources */,
-				4954E47F2C22B000008E99B8 /* CharacterResData.swift in Sources */,
+				4954E47F2C22B000008E99B8 /* Character.swift in Sources */,
 				4954E4602C1D6467008E99B8 /* ImageResData.swift in Sources */,
 				49E4576D2C2DBF9E00B01FC9 /* GoodsEffect.swift in Sources */,
 				4954E4622C1D7565008E99B8 /* ResType.swift in Sources */,
-				491B37E92C3069DF00A6EA6A /* FightingCharacterData.swift in Sources */,
+				491B37E92C3069DF00A6EA6A /* FightingCharacter.swift in Sources */,
 				4954E4592C1BC66E008E99B8 /* DatLib.swift in Sources */,
 				4954E4812C22B26C008E99B8 /* Direction.swift in Sources */,
 				491B37E72C30315E00A6EA6A /* NPC.swift in Sources */,

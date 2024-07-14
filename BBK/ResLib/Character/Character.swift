@@ -21,12 +21,15 @@ enum CharacterState: Int {
     case active = 4
 }
 
-protocol CharacterData: BaseResData {
+/// 角色数据
+protocol CharacterResData: BaseResData {
+    /// 角色名称
     var name: String { get }
+    /// 角色状态
     var state: CharacterState { get }
 }
 
-extension CharacterData {
+extension CharacterResData {
 }
 
 

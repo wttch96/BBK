@@ -51,6 +51,8 @@ struct MapResData: BaseResData {
             }
         }
         
+        print(tiles)
+        
         self.tiles = tiles
         self.walkable = walkable
         self.eventIds = eventIds

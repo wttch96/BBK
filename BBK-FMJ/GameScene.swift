@@ -5,15 +5,30 @@
 //  Created by Wttch on 2024/6/28.
 //
 
-import SpriteKit
 import GameplayKit
+import SpriteKit
 
 class GameScene: SKScene {
-    
-    private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
+    private var label: SKLabelNode?
+    private var spinnyNode: SKShapeNode?
     
     override func didMove(to view: SKView) {
+        var tileGroup = BlobTileSetLoader.load(name: "Tileset/2/1", size: 32)
+        var tilesets = SKTileSet(tileGroups: [tileGroup!])
+        var map = Map.load(name: "1-2")!
+        var mapNode = SKTileMapNode(tileSet: tilesets, columns: map.width + 2, rows: map.height + 2, tileSize: CGSize(width: 32, height: 32))
+        
+        
+        mapNode.enableAutomapping = true
+        
+        addChild(mapNode)
+        for y in 0 ..< map.height {
+            for x in 0 ..< map.width {
+                if let tileIndex = tilesets.tileGroups.first(where: { $0.name == "\(map.tiles[y][x])" }) {
+                    mapNode.setTileGroup(tileIndex, forColumn: x + 1, row: map.height - 1 - y + 1)
+                }
+            }
+        }
         
         // Get label node from scene and store it for use later
         self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
@@ -24,7 +39,7 @@ class GameScene: SKScene {
         
         // Create shape node to use during mouse interaction
         let w = (self.size.width + self.size.height) * 0.05
-        self.spinnyNode = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
+        self.spinnyNode = SKShapeNode(rectOf: CGSize(width: w, height: w), cornerRadius: w * 0.3)
         
         if let spinnyNode = self.spinnyNode {
             spinnyNode.lineWidth = 2.5
@@ -36,8 +51,7 @@ class GameScene: SKScene {
         }
     }
     
-    
-    func touchDown(atPoint pos : CGPoint) {
+    func touchDown(atPoint pos: CGPoint) {
         if let n = self.spinnyNode?.copy() as! SKShapeNode? {
             n.position = pos
             n.strokeColor = SKColor.green
@@ -45,7 +59,7 @@ class GameScene: SKScene {
         }
     }
     
-    func touchMoved(toPoint pos : CGPoint) {
+    func touchMoved(toPoint pos: CGPoint) {
         if let n = self.spinnyNode?.copy() as! SKShapeNode? {
             n.position = pos
             n.strokeColor = SKColor.blue
@@ -53,7 +67,7 @@ class GameScene: SKScene {
         }
     }
     
-    func touchUp(atPoint pos : CGPoint) {
+    func touchUp(atPoint pos: CGPoint) {
         if let n = self.spinnyNode?.copy() as! SKShapeNode? {
             n.position = pos
             n.strokeColor = SKColor.red
@@ -77,13 +91,12 @@ class GameScene: SKScene {
         switch event.keyCode {
         case 0x31:
             if let label = self.label {
-                label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
+                label.run(SKAction(named: "Pulse")!, withKey: "fadeInOut")
             }
         default:
             print("keyDown: \(event.characters!) keyCode: \(event.keyCode)")
         }
     }
-    
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered

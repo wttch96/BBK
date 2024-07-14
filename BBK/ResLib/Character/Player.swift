@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct Player {
+struct PlayerResData {
     let headImageIndex: Int
     let walkingSpriteIndex: Int
     let fightingSpriteIndex: Int

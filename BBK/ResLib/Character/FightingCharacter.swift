@@ -8,7 +8,7 @@
 import Foundation
 
 
-protocol FightingCharacterData: CharacterData {
+protocol FightingCharacterData: CharacterResData {
     var level: Int { get }
     var maxHp: Int { get }
     var maxMp: Int { get }
