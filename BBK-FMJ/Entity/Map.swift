@@ -12,7 +12,8 @@ struct Map: Codable {
     let width: Int
     let height: Int
     let tiles: [[Int]]
-    
+    /// 将指定的图块转换为另一种放在背景，然后本身绘制在 Dots 层
+    let dots: [Int: Int]
 
     static func load(name: String) -> Map? {
         guard let url = Bundle.main.url(forResource: name, withExtension: "json") else {
@@ -27,5 +28,11 @@ struct Map: Codable {
         }
 
         return nil
+    }
+}
+
+extension Map {
+    func isDot(x: Int, y: Int) -> Int? {
+        return dots[tiles[y][x]]
     }
 }

@@ -6,6 +6,9 @@
          contextName = "DatLib.getAllResOffset():DatLib.swift">
       </ContextState>
       <ContextState
+         contextName = "WalkingSprite.getImage():WalkingSprite.swift">
+      </ContextState>
+      <ContextState
          contextName = "ResScript.init(data:offset:):ResScript.swift">
       </ContextState>
       <ContextState
@@ -23,7 +26,12 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "WalkingSprite.getImage():WalkingSprite.swift">
+         contextName = "MapScene.init(mapName:):MapScene.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "map.tiles[y][x]">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "ResScript.init(data:):ResScript.swift">
@@ -32,10 +40,10 @@
          contextName = "ResMap.getTileIndex(x:y:):ResMap.swift">
          <PersistentStrings>
             <PersistentString
-               value = "mapData[y][x]">
+               value = "mapData[y][x] &amp; 0x7F00">
             </PersistentString>
             <PersistentString
-               value = "mapData[y][x] &amp; 0x7F00">
+               value = "mapData[y][x]">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -54,13 +62,30 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "Array&lt;&#x3c4;_0_0&gt;.toTileGroup():BlobCropping.swift">
+      </ContextState>
+      <ContextState
+         contextName = "static Map.load(name:):Map.swift">
+      </ContextState>
+      <ContextState
          contextName = "ResImage.createImage():ImageResData.swift">
       </ContextState>
       <ContextState
          contextName = "ResImage.createImage():ResImage.swift">
       </ContextState>
       <ContextState
+         contextName = "adjacencyMark(_:):BlobCropping.swift">
+      </ContextState>
+      <ContextState
          contextName = "DatLib.getDataOffset(resType:type:index:):DatLib.swift">
+      </ContextState>
+      <ContextState
+         contextName = "GameScene.didMove(to:):GameScene.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "tilesets.tileGroups">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "ScriptProcess.getExecutor():ScriptProcess.swift">
