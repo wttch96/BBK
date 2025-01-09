@@ -9,6 +9,22 @@ import Foundation
 import SpriteKit
 
 class Tilesets {
+    static let tileset1 = SKTileSet(tileGroups: [
+        loadTile(type: 1, index: 1)!,
+        loadBlob(type: 1, index: 38)!,
+        loadTile(type: 1, index: 50)!,
+        loadTile(type: 1, index: 51)!,
+        loadTile(type: 1, index: 52)!,
+        loadTile(type: 1, index: 53)!,
+        loadTile(type: 1, index: 54)!,
+        loadTile(type: 1, index: 55)!,
+        loadTile(type: 1, index: 56)!,
+        loadTile(type: 1, index: 58)!,
+        loadTile(type: 1, index: 59)!,
+        loadTile(type: 1, index: 67)!,
+        loadTile(type: 1, index: 68)!,
+    ])
+    
     static let tileset2 = SKTileSet(tileGroups: [
         loadBlob(type: 2, index: 1)!,
         loadTiles(type: 2, index: 15, count: 4)!,

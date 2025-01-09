@@ -1,0 +1,33 @@
+{
+  "originHash" : "6e53979210d4f5f64f8c7c649b6434389ba2b1fca9a7e7cac7b360dd9a0b0b54",
+  "pins" : [
+    {
+      "identity" : "swift-log",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-log.git",
+      "state" : {
+        "revision" : "96a2f8a0fa41e9e09af4585e2724c4e825410b91",
+        "version" : "1.6.2"
+      }
+    },
+    {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-syntax.git",
+      "state" : {
+        "revision" : "0687f71944021d616d34d922343dcef086855920",
+        "version" : "600.0.1"
+      }
+    },
+    {
+      "identity" : "swiftlogmacro",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/wttch96/SwiftLogMacro",
+      "state" : {
+        "revision" : "49032fec722ac3aa2bd319da8f78aee351a593ff",
+        "version" : "0.0.1"
+      }
+    }
+  ],
+  "version" : 3
+}

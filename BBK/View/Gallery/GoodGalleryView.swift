@@ -46,7 +46,7 @@ extension GoodGalleryView {
                     {
                         Image(image, scale: 1, label: Text(""))
                             .scaledToFill()
-                            .frame(width: 32)
+                            .frame(width: 48, height: 48)
                     }
                     VStack(alignment: .leading) {
                         HStack {
@@ -87,7 +87,7 @@ extension GoodGalleryView {
                         Text("幸运: \(extra.luck)")
                     }
                     HStack {
-                        if extra.effect.poison {
+                        if extra.effect.`poison` {
                             Text("毒")
                                 .padding(.horizontal, 4)
                                 .background(.purple)

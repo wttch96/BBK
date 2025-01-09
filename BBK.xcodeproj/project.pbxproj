@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -45,6 +45,7 @@
 		4954E4812C22B26C008E99B8 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4954E4802C22B26C008E99B8 /* Direction.swift */; };
 		4954E4832C22B4C9008E99B8 /* WalkingSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4954E4822C22B4C9008E99B8 /* WalkingSprite.swift */; };
 		4954E4852C22D520008E99B8 /* DataUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4954E4842C22D520008E99B8 /* DataUtil.swift */; };
+		4988B0402D2FBB4A00DFBA1C /* SwiftLogMacro in Frameworks */ = {isa = PBXBuildFile; productRef = 4988B03F2D2FBB4A00DFBA1C /* SwiftLogMacro */; };
 		49D5AD062C340549000F6408 /* ArrayUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D5AD052C340549000F6408 /* ArrayUtil.swift */; };
 		49DE49AF2C43BA8A00EB84D7 /* BlobCropping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE49AE2C43BA8A00EB84D7 /* BlobCropping.swift */; };
 		49DE49B12C43BA9500EB84D7 /* CGImageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE49B02C43BA9500EB84D7 /* CGImageUtil.swift */; };
@@ -64,6 +65,7 @@
 		49DE49F32C4400EE00EB84D7 /* BlobCropping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE49AE2C43BA8A00EB84D7 /* BlobCropping.swift */; };
 		49DE49F42C4400F600EB84D7 /* CGImageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE49B02C43BA9500EB84D7 /* CGImageUtil.swift */; };
 		49DE49F82C44043A00EB84D7 /* Tilesets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE49F72C44043A00EB84D7 /* Tilesets.swift */; };
+		49DE49FE2C44DF1600EB84D7 /* 1-1.json in Resources */ = {isa = PBXBuildFile; fileRef = 49DE49FD2C44DF1600EB84D7 /* 1-1.json */; };
 		49E457662C2C69C600B01FC9 /* GoodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E457652C2C69C600B01FC9 /* GoodType.swift */; };
 		49E457682C2CFDF900B01FC9 /* GoodEquipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E457672C2CFDF900B01FC9 /* GoodEquipment.swift */; };
 		49E4576D2C2DBF9E00B01FC9 /* GoodsEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E4576C2C2DBF9E00B01FC9 /* GoodsEffect.swift */; };
@@ -161,6 +163,7 @@
 		4954E4802C22B26C008E99B8 /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		4954E4822C22B4C9008E99B8 /* WalkingSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingSprite.swift; sourceTree = "<group>"; };
 		4954E4842C22D520008E99B8 /* DataUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUtil.swift; sourceTree = "<group>"; };
+		4988B00B2D2FBAFE00DFBA1C /* FMJSimpleColors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FMJSimpleColors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49D5AD052C340549000F6408 /* ArrayUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayUtil.swift; sourceTree = "<group>"; };
 		49DE49AE2C43BA8A00EB84D7 /* BlobCropping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlobCropping.swift; sourceTree = "<group>"; };
 		49DE49B02C43BA9500EB84D7 /* CGImageUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGImageUtil.swift; sourceTree = "<group>"; };
@@ -183,10 +186,15 @@
 		49DE49F12C4400D200EB84D7 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		49DE49F52C44031D00EB84D7 /* TileSetEditorRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TileSetEditorRelease.entitlements; sourceTree = "<group>"; };
 		49DE49F72C44043A00EB84D7 /* Tilesets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tilesets.swift; sourceTree = "<group>"; };
+		49DE49FD2C44DF1600EB84D7 /* 1-1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "1-1.json"; sourceTree = "<group>"; };
 		49E457652C2C69C600B01FC9 /* GoodType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodType.swift; sourceTree = "<group>"; };
 		49E457672C2CFDF900B01FC9 /* GoodEquipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodEquipment.swift; sourceTree = "<group>"; };
 		49E4576C2C2DBF9E00B01FC9 /* GoodsEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsEffect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		4988B00C2D2FBAFE00DFBA1C /* FMJSimpleColors */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = FMJSimpleColors; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		490AA9BB2C2EA2E1005053CE /* Frameworks */ = {
@@ -228,6 +236,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4988B0082D2FBAFE00DFBA1C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4988B0402D2FBB4A00DFBA1C /* SwiftLogMacro in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +317,7 @@
 				49DE49C22C43FFE500EB84D7 /* TileSetEditor */,
 				49DE49D42C43FFE600EB84D7 /* TileSetEditorTests */,
 				49DE49DE2C43FFE600EB84D7 /* TileSetEditorUITests */,
+				4988B00C2D2FBAFE00DFBA1C /* FMJSimpleColors */,
 				4954E4282C1BC5C4008E99B8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -317,6 +334,7 @@
 				49DE49C12C43FFE400EB84D7 /* TileSetEditor.app */,
 				49DE49D12C43FFE600EB84D7 /* TileSetEditorTests.xctest */,
 				49DE49DB2C43FFE600EB84D7 /* TileSetEditorUITests.xctest */,
+				4988B00B2D2FBAFE00DFBA1C /* FMJSimpleColors.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -467,6 +485,7 @@
 		49DE49B22C43BCF200EB84D7 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				49DE49FD2C44DF1600EB84D7 /* 1-1.json */,
 				49DE49B32C43BD1A00EB84D7 /* 1-2.json */,
 			);
 			path = Map;
@@ -665,6 +684,29 @@
 			productReference = 4954E4422C1BC5C6008E99B8 /* BBKUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		4988B00A2D2FBAFE00DFBA1C /* FMJSimpleColors */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4988B01D2D2FBB0000DFBA1C /* Build configuration list for PBXNativeTarget "FMJSimpleColors" */;
+			buildPhases = (
+				4988B0072D2FBAFE00DFBA1C /* Sources */,
+				4988B0082D2FBAFE00DFBA1C /* Frameworks */,
+				4988B0092D2FBAFE00DFBA1C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				4988B00C2D2FBAFE00DFBA1C /* FMJSimpleColors */,
+			);
+			name = FMJSimpleColors;
+			packageProductDependencies = (
+				4988B03F2D2FBB4A00DFBA1C /* SwiftLogMacro */,
+			);
+			productName = FMJSimpleColors;
+			productReference = 4988B00B2D2FBAFE00DFBA1C /* FMJSimpleColors.app */;
+			productType = "com.apple.product-type.application";
+		};
 		49DE49C02C43FFE400EB84D7 /* TileSetEditor */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 49DE49E32C43FFE600EB84D7 /* Build configuration list for PBXNativeTarget "TileSetEditor" */;
@@ -725,7 +767,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1540;
+				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					490AA9BD2C2EA2E1005053CE = {
@@ -750,6 +792,9 @@
 						CreatedOnToolsVersion = 15.4;
 						TestTargetID = 4954E4262C1BC5C4008E99B8;
 					};
+					4988B00A2D2FBAFE00DFBA1C = {
+						CreatedOnToolsVersion = 16.2;
+					};
 					49DE49C02C43FFE400EB84D7 = {
 						CreatedOnToolsVersion = 15.4;
 					};
@@ -772,6 +817,9 @@
 				Base,
 			);
 			mainGroup = 4954E41E2C1BC5C4008E99B8;
+			packageReferences = (
+				4988B03E2D2FBB4A00DFBA1C /* XCRemoteSwiftPackageReference "SwiftLogMacro" */,
+			);
 			productRefGroup = 4954E4282C1BC5C4008E99B8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -785,6 +833,7 @@
 				49DE49C02C43FFE400EB84D7 /* TileSetEditor */,
 				49DE49D02C43FFE600EB84D7 /* TileSetEditorTests */,
 				49DE49DA2C43FFE600EB84D7 /* TileSetEditorUITests */,
+				4988B00A2D2FBAFE00DFBA1C /* FMJSimpleColors */,
 			);
 		};
 /* End PBXProject section */
@@ -798,6 +847,7 @@
 				49DE49B42C43BD1A00EB84D7 /* 1-2.json in Resources */,
 				490AA9C52C2EA2E1005053CE /* Actions.sks in Resources */,
 				490AA9CE2C2EA2E3005053CE /* Base in Resources */,
+				49DE49FE2C44DF1600EB84D7 /* 1-1.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -833,6 +883,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		4954E4402C1BC5C6008E99B8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4988B0092D2FBAFE00DFBA1C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -945,6 +1002,13 @@
 			files = (
 				4954E4492C1BC5C6008E99B8 /* BBKUITestsLaunchTests.swift in Sources */,
 				4954E4472C1BC5C6008E99B8 /* BBKUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4988B0072D2FBAFE00DFBA1C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1396,6 +1460,62 @@
 			};
 			name = Release;
 		};
+		4988B01E2D2FBB0000DFBA1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FMJSimpleColors/FMJSimpleColors.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B2QC3G5H48;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wttch.FMJSimpleColors;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		4988B01F2D2FBB0000DFBA1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FMJSimpleColors/FMJSimpleColors.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B2QC3G5H48;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wttch.FMJSimpleColors;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		49DE49E42C43FFE600EB84D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1407,7 +1527,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TileSetEditor/Preview Content\"";
 				DEVELOPMENT_TEAM = MYB5299FCX;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				ENABLE_USER_SELECTED_FILES = readwrite;
@@ -1436,7 +1556,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TileSetEditor/Preview Content\"";
 				DEVELOPMENT_TEAM = MYB5299FCX;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				ENABLE_USER_SELECTED_FILES = readwrite;
@@ -1592,6 +1712,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		4988B01D2D2FBB0000DFBA1C /* Build configuration list for PBXNativeTarget "FMJSimpleColors" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4988B01E2D2FBB0000DFBA1C /* Debug */,
+				4988B01F2D2FBB0000DFBA1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		49DE49E32C43FFE600EB84D7 /* Build configuration list for PBXNativeTarget "TileSetEditor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1620,6 +1749,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4988B03E2D2FBB4A00DFBA1C /* XCRemoteSwiftPackageReference "SwiftLogMacro" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/wttch96/SwiftLogMacro";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4988B03F2D2FBB4A00DFBA1C /* SwiftLogMacro */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4988B03E2D2FBB4A00DFBA1C /* XCRemoteSwiftPackageReference "SwiftLogMacro" */;
+			productName = SwiftLogMacro;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4954E41F2C1BC5C4008E99B8 /* Project object */;
 }

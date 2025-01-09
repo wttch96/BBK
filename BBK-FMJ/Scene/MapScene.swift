@@ -11,7 +11,7 @@ import SpriteKit
 class MapScene: SKScene {
     init(mapName: String) {
         
-        var tilesets = Tilesets.tileset2
+        var tilesets = Tilesets.tileset1
         var map = Map.load(name: mapName)!
         
         super.init(size: CGSize(width: 800, height: 600))
@@ -26,6 +26,7 @@ class MapScene: SKScene {
             
         addChild(mapNode)
         addChild(dotNode)
+        var camera = SKCameraNode()
         for y in 0 ..< map.height {
             for x in 0 ..< map.width {
                 // 判断是否为 dots
@@ -43,6 +44,9 @@ class MapScene: SKScene {
                 }
             }
         }
+        addChild(camera)
+        self.camera = camera
+        self.camera?.setScale(2)
     }
     
     required init?(coder aDecoder: NSCoder) {
